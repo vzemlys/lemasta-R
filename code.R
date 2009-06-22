@@ -116,7 +116,7 @@ edlagv <- function(expr,start,end,exonames) {
     if(length(expr)==1) {
         nm <- deparse(expr)
         if(nm %in% exonames) {
-            e <- paste(".(window(",nm,",start=",deparse(start),",end=",deparse(end),"))",sep="")
+            e <- paste(".(as.numeric(window(",nm,",start=",deparse(start),",end=",deparse(end),")))",sep="")
             return(parse(text=e)[[1]])
         }
         else         return(expr)
@@ -127,7 +127,7 @@ edlagv <- function(expr,start,end,exonames) {
     if(length(expr)==3) {
         if(expr[[1]]==as.name("lag")) {
             ie <- deparse(expr)
-            e <- paste(".(window(",ie,",start=",deparse(start),",end=",deparse(end),"))",sep="")
+            e <- paste(".(as.numeric(window(",ie,",start=",deparse(start),",end=",deparse(end),")))",sep="")
             return(parse(text=e)[[1]])
         }
         else {
