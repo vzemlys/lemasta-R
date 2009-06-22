@@ -3,6 +3,7 @@
 ##Data: data/all_data_all_data.csv,
 ##      data/data_sa_Feuille1.csv,
 ##      data/LEMAMmod_lemmdata.csv,
+##      data/LEMAMmod_aprasymas.csv
 ##      eviews/endoexo.csv
 ##Code: code.R,
 ##      eviews/eviewseq.R
@@ -49,19 +50,32 @@ upper <- rep(Inf,26)
 upper[19] <- log(100)
 
 
-ftry <- eqforecast(start=c(2008,4),end=c(2008,4),eqR,endoexo,data=ladt,lower=lower,upper=upper)
+ftry <- eqforecast(start=c(2008,1),end=c(2008,4),eqR,endoexo,data=ladt,lower=lower,upper=upper,method="L-BFGS-B")
 
 endol <- ladt[,colnames(ftry)]
 
-colnames(ftry) <- paste("f_",colnames(ftry))
-
 
 gofd <- cbind(endol,ftry)
-colnames(gofd) <- c(colnames(endol),colnames(ftry))
+colnames(gofd) <- c(colnames(endol),paste("f_",colnames(ftry),sep=""))
 
 no <- dim(endol)[2]
 
 xyplot(gofd,screens=rep(1:no,2),col=c(rep("blue",no),rep("red",no)))
 
+nmi <- read.csv("data/LEMAMmod_aprasymas.csv")
+
+nmi[,1] <- tolower(as.character(nmi[,1]))
+
+nmi <- data.frame(name=nmi[,1],saname=paste(nmi[,1],"_sa",sep=""),nicename=nmi[,2])
+
+nmi <- nmi[order(nmi[,1]),]
+
+res <- t(ftry)
+rownames(res) <- NULL
+
+res <- data.frame(as.character(nmi[match(colnames(endol),as.character(nmi[,2])),3]),res)
 
 
+names(res) <- c("Rodiklis",paste("2008 K",1:4,sep=""))
+
+require(xtable)

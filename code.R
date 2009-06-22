@@ -12,7 +12,7 @@ eqforecast <- function(start,end,eq,endoexo,data,...) {
         res <- sapply(eqogy,function(l)as.numeric(eval(l,list(y=y))))
         res
     }
-
+   
     timem <- fillstartend(start,end)
     res <- numeric()
     for (i in 1:dim(timem)[1])     {
@@ -25,6 +25,8 @@ eqforecast <- function(start,end,eq,endoexo,data,...) {
         eqmod <- lapply(eqit,function(l)eval(l,as.list(data)))
 
         eqs <- eqs.optim(eqmod,subtb)
+        eqoy <- eqs$fn
+        eqogy <- eqs$grad
         
         x0 <- as.numeric(window(data[,subtb[,1]],start=it0,end=it0))
 
@@ -45,12 +47,12 @@ eqs.optim <- function(eqmod,subtable) {
 
     eqo <- parse(text=paste(eqo,collapse="+"))
 
-    eqo <- subvars(eqo[[1]],cbind(subtb[,1],subtb[,1]),make.exp=TRUE)
+    eqo <- subvars(eqo[[1]],cbind(subtable[,1],subtable[,1]),make.exp=TRUE)
 
-    eqog <- lapply(subtb[,1],function(l)D(eqo,name=l))
+    eqog <- lapply(subtable[,1],function(l)D(eqo,name=l))
 
-    eqoy <- subvars(eqo,subtb)
-    eqogy <-lapply(eqog,function(l)subvars(l,subtb))
+    eqoy <- subvars(eqo,subtable)
+    eqogy <-lapply(eqog,function(l)subvars(l,subtable))
 
     list(fn=eqoy,grad=eqogy)
 
