@@ -27,3 +27,77 @@ blz <- edlagv(lx,start=3,end=3,exonames=c("x","z"))
 
 bq <- parse(text=paste("bquote(",deparse(blz,width=500),")",sep=""))
 
+
+exonames <- as.character(endoexo$name[endoexo$exo=="Exog"])
+
+it0 <- c(2008,4)
+
+eqit <- lapply(eqR,function(l)edlagv(l,start=it0,end=it0,exonames=exonames))
+
+eqbq <- lapply(eqit,function(l) {
+    parse(text=paste("bquote(",paste(deparse(l,width=500),collapse=""),")",sep=""))
+})
+
+eqmod <- lapply(eqbq,function(l)eval(l,as.list(ladt)))
+
+noendog <- table(endoexo$exo)["Endog"]
+
+subtb <- cbind(as.character(endoexo$name[endoexo$exo=="Endog"]),paste("y[",1:noendog,"]",sep=""))
+
+eqdfs <- lapply(eqmod,function(l)subvars(l,subtb,make.exp=TRUE))
+
+modelis <- function(y,eqs) {
+    res <- sapply(eqs,function(l)as.numeric(eval(l,list(y=y))))
+    res
+}
+
+mod.optim <- function(y,eqs) {
+        res <- sapply(eqs,function(l)as.numeric(eval(l,list(y=y))))
+        sum(res^2)
+}
+
+eqo <- sapply(eqmod,function(l) {
+    aa <- paste(deparse(l,wid=500),collapse="")
+    paste("(",aa,")^2",sep="")
+})
+
+eqo <- parse(text=paste(eqo,collapse="+"))
+
+eqo <- subvars(eqo[[1]],cbind(subtb[,1],subtb[,1]),make.exp=TRUE)
+
+eqog <- lapply(subtb[,1],function(l)D(eqo,name=l))
+
+eqoy <- subvars(eqo,subtb)
+eqogy <-lapply(eqog,function(l)subvars(l,subtb))
+
+   
+mod.o <- function(y) {
+    as.numeric(eval(eqoy,list(y=y)))
+}
+
+mod.ograd <- function(y) {
+    res <- sapply(eqogy,function(l)as.numeric(eval(l,list(y=y))))
+    res
+}
+
+
+  
+
+x0 <- as.numeric(window(ladt[,subtb[,1]],start=it0,end=it0))
+
+require(BB)
+
+#firstry <- dfsane(par = log(x0), fn = modelis, method=3,control=list(M=10,tol = 1.e-10),eqs=eqdfsane)
+
+fo <- optim(log(x0),mod.optim,eqs=eqdfs,method="BFGS",control=list(trace=1))
+
+fog <- optim(par=log(x0),fn=mod.o,gr=mod.ograd,method="BFGS",control=list(trace=1))
+
+lower <- rep( -Inf,26)
+upper <- rep(Inf,26)
+
+upper[19] <- log(100)
+
+fogs <- optim(par=log(x0),fn=mod.o,gr=mod.ograd,method="L-BFGS-B",control=list(trace=1))
+
+

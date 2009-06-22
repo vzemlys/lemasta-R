@@ -1,26 +1,59 @@
-l <- function(x,lag=-1){
-    n <- length(x)
-    x[n+lag]
-}
+eqforecast <- function(start,end,eq,endoexo,data,...) {
+    exonames <- as.character(endoexo$name[endoexo$exo=="Exog"])
 
-eviewstoR.old <- function(str,varnames) {
-    ###substitute a(-1) to l(a,-1) and dlog(a) to log(a)-l(log(a),-1),
-    ###where a is the variable a
-
-    varnames <- tolower(varnames)
-    str <- tolower(str)
+    noendog <- table(endoexo$exo)["Endog"]
+    subtb <- cbind(as.character(endoexo$name[endoexo$exo=="Endog"]),paste("y[",1:noendog,"]",sep=""))
     
-    eq <- parse(text=str)
-
-    lnames <- intersect(varnames,all.names(eq))
-    lnames
-    for(l in lnames) {
-        pattern <- paste("(",l,")([(])",sep="")
-        str <- gsub(pattern,"l\\2\\1,",str)
-        str
+    mod.o <- function(y) {
+        as.numeric(eval(eqoy,list(y=y)))
     }
 
-    str
+    mod.ograd <- function(y) {
+        res <- sapply(eqogy,function(l)as.numeric(eval(l,list(y=y))))
+        res
+    }
+
+    timem <- fillstartend(start,end)
+    res <- numeric()
+    for (i in 1:dim(timem)[1])     {
+        it0 <- timem[i,]
+        
+        eqit <- lapply(eq,function(l)edlagv(l,start=it0,end=it0,exonames=exonames))
+        eqit <- lapply(eqit,function(l) {
+            parse(text=paste("bquote(",paste(deparse(l,width=500),collapse=""),")",sep=""))
+        })
+        eqmod <- lapply(eqit,function(l)eval(l,as.list(data)))
+
+        eqs <- eqs.optim(eqmod,subtb)
+        
+        x0 <- as.numeric(window(data[,subtb[,1]],start=it0,end=it0))
+
+        
+        fogs <- optim(par=log(x0),fn=mod.o,gr=mod.ograd,...)
+        res <- rbind(res,exp(fogs$par))
+    }
+    res <- ts(res,start=start,end=end,frequency=4)
+    colnames(res) <- subtb[,1]
+    res
+}
+
+eqs.optim <- function(eqmod,subtable) {
+    eqo <- sapply(eqmod,function(l) {
+        aa <- paste(deparse(l,wid=500),collapse="")
+        paste("(",aa,")^2",sep="")
+    })
+
+    eqo <- parse(text=paste(eqo,collapse="+"))
+
+    eqo <- subvars(eqo[[1]],cbind(subtb[,1],subtb[,1]),make.exp=TRUE)
+
+    eqog <- lapply(subtb[,1],function(l)D(eqo,name=l))
+
+    eqoy <- subvars(eqo,subtb)
+    eqogy <-lapply(eqog,function(l)subvars(l,subtb))
+
+    list(fn=eqoy,grad=eqogy)
+
 }
 
 eviewstoR <-function(str,varnames) {
@@ -33,7 +66,25 @@ eviewstoR <-function(str,varnames) {
     res
 }
   
+fillstartend <- function(start,end) {
+    
+    q <- start[2]:4
+    
+    y <- rep(start[1],length(q))
 
+    if(end[1]>start[1]+1) {
+
+        my <- rep((start[1]+1):(end[1]-1),each=4)
+        q <- c(q,rep(1:4,length.out=length(my)))
+        y <- c(y,my)
+    }
+    if(end[1]>start[1]) {
+        eq <- 1:end[2]
+        y <- c(y,rep(end[1],length(eq)))
+        q <- c(q,eq)
+    }
+    cbind(y,q)
+}
 
 edlogv <- function(expr,varnames) {
     if(length(expr)==1) {
