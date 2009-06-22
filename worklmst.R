@@ -50,7 +50,7 @@ upper <- rep(Inf,26)
 upper[19] <- log(100)
 
 
-ftry <- eqforecast(start=c(2008,1),end=c(2008,4),eqR,endoexo,data=ladt,lower=lower,upper=upper,method="L-BFGS-B")
+ftry <- eqforecast(start=c(2008,1),end=c(2008,4),eqR,endoexo,data=ladt,lower=lower,upper=upper,method="L-BFGS-B",control=list(trace=1))
 
 endol <- ladt[,colnames(ftry)]
 
@@ -79,3 +79,6 @@ res <- data.frame(as.character(nmi[match(colnames(endol),as.character(nmi[,2])),
 names(res) <- c("Rodiklis",paste("2008 K",1:4,sep=""))
 
 require(xtable)
+
+
+print(xtable(res),type="html",include.rows=FALSE,file="ftable.html")
