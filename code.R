@@ -16,17 +16,23 @@ eqforecast <- function(start,end,eq,endoexo,data,...) {
         res
     }
    
-    timem <- fillstartend(start,end)
+    timem <- qpadd(start,end)
     res <- numeric()
     for (i in 1:dim(timem)[1])     {
+
         it0 <- timem[i,]
+       
         
         eqit <- lapply(eq,function(l)edlagv(l,start=it0,end=it0,exonames=exonames))
+        
         eqit <- lapply(eqit,function(l) {
             parse(text=paste("bquote(",paste(deparse(l,width=500),collapse=""),")",sep=""))
         })
+        
+        
         eqmod <- lapply(eqit,function(l)eval(l,as.list(data)))
-
+       # browser()
+        
         eqs <- eqs.optim(eqmod,subtb)
         eqoy <- eqs$fn
         eqogy <- eqs$grad
@@ -70,9 +76,22 @@ eviewstoR <-function(str,varnames) {
     res <- edlogv(eq[[1]],varnames=lnames)
     res
 }
-  
-fillstartend <- function(start,end) {
-    
+
+read.eviews <- function(file) {
+    ###Reads eviews equations output, strips
+    ###lines starting with @INNOV, and removes @IDENTITY
+    ss <-scan(file,what=character(),sep='\n',blank.lines.skip=TRUE,comment.char="'")
+    ss <- gsub("@INNOV.*","",ss)
+    ss <- gsub("@IDENTITY +","",ss)
+    ss <- ss[ss!=""]
+    ss <- gsub("[[].*[]]","",ss) ###Remove error terms in brackets
+   
+    ss <- gsub("[+-] *$","",ss) ### Remove trailing arithmetic signs at the end of the line
+    ss
+}
+
+qpadd <- function(start,end) {
+##Padd in quarters given start and end in terms c(year,quarter)
     q <- start[2]:4
     
     y <- rep(start[1],length(q))
@@ -88,7 +107,10 @@ fillstartend <- function(start,end) {
         y <- c(y,rep(end[1],length(eq)))
         q <- c(q,eq)
     }
-    cbind(y,q)
+    res <- cbind(y,q)
+    colnames(res) <- NULL
+    rownames(res) <- NULL
+    res
 }
 
 plot.forecast <- function(x,fc,varn,labels) {

@@ -5,8 +5,8 @@
 ##      data/LEMAMmod_lemmdata.csv,
 ##      data/LEMAMmod_aprasymas.csv
 ##      eviews/endoexo.csv
+##      eviews/LEMAM.txt
 ##Code: code.R,
-##      eviews/eviewseq.R
 ##      
 
 
@@ -30,12 +30,12 @@ colnames(sadt) <- tolower(colnames(sadt))
 colnames(adt)  <- tolower(colnames(adt))
 colnames(ladt) <- tolower(colnames(ladt))
   
-source("eviews/eviewseq.R")
+
 source("code.R")
 
-eqstr <- gsub("\n","",eqstr)
+eqstr <- read.eviews("eviews/LEMAM.txt")
 
-eqstrm <- gsub("=","-",eqstr)
+eqstrm <- sub("(=)(.*)","-(\\2)",eqstr)
 
 
 eqR <- lapply(eqstrm,function(l)eviewstoR(l,varnames=colnames(ladt)))
