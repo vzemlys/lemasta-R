@@ -1,3 +1,6 @@
+require(tseries)
+require(lattice)
+
 eqforecast <- function(start,end,eq,endoexo,data,...) {
     exonames <- as.character(endoexo$name[endoexo$exo=="Exog"])
 
@@ -86,6 +89,39 @@ fillstartend <- function(start,end) {
         q <- c(q,eq)
     }
     cbind(y,q)
+}
+
+plot.forecast <- function(x,fc,varn,labels) {
+
+    ##Find the variables who do not have seasonality removed.
+   
+    svarn <- paste(varn,"_sa",sep="")
+    wsn <- setdiff(svarn,colnames(x))
+
+    if(length(wsn)>0) {
+        wsnr <- sapply(wsn,function(s)substring(s,1,nchar(s)-3))
+        svarn <- c(setdiff(svarn,wsn),wsnr)
+    }
+        
+    fcn <- intersect(colnames(fc),svarn)
+    
+    if(length(fcn)>0) {
+        endol <- x[,svarn,drop=FALSE]
+        gofd <- cbind(endol,fc[,fcn])
+
+        colnames(gofd) <- c(svarn,paste("f_",fcn,sep=""))
+        no <- dim(endol)[2]
+        fscr <- match(fcn,svarn)
+        ylab=as.character(labels[match(varn,as.character(labels[,1])),3])
+        ylab[is.na(ylab)] <- "a"
+        
+        print(xyplot(gofd,screens=c(1:no,fscr),col=c(rep("blue",no),rep("red",length(fcn)))))
+    }
+    else {
+        print(xyplot(x[,svarn,drop=FALSE]))
+    }
+
+
 }
 
 edlogv <- function(expr,varnames) {

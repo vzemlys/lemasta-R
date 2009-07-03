@@ -38,7 +38,7 @@ eqstr <- gsub("\n","",eqstr)
 eqstrm <- gsub("=","-",eqstr)
 
 
-eqR <- lapply(eqstrm,function(l)eviewstoR(l,varnames=colnames(adt)))
+eqR <- lapply(eqstrm,function(l)eviewstoR(l,varnames=colnames(ladt)))
 
 endoexo <- read.csv("eviews/endoexo.csv")
 
@@ -82,3 +82,19 @@ require(xtable)
 
 
 print(xtable(res),type="html",include.rows=FALSE,file="ftable.html")
+
+aldt <- adt
+
+ialnm <- intersect(colnames(adt),colnames(ladt))
+sdalnm <- setdiff(colnames(ladt),colnames(adt))
+
+aldt[,ialnm] <- ladt[,ialnm]
+
+alnm <- colnames(aldt)
+
+aldt <- cbind(aldt,ladt[,sdalnm])
+
+colnames(aldt) <- c(alnm,sdalnm)
+
+save(eqR,endoexo,aldt,lower,upper,nmi,ftry,file="lemasta.RData")
+
