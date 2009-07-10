@@ -17,6 +17,7 @@ eqforecast <- function(start,end,eq,endoexo,data,...) {
     }
    
     timem <- qpadd(start,end)
+    indt <- ts(1:dim(data)[1],start=start(data),end=end(data),freq=4)
     res <- numeric()
     for (i in 1:dim(timem)[1])     {
 
@@ -37,15 +38,26 @@ eqforecast <- function(start,end,eq,endoexo,data,...) {
         eqoy <- eqs$fn
         eqogy <- eqs$grad
         
-        x0 <- as.numeric(window(data[,subtb[,1]],start=it0,end=it0))
+        x0 <- as.numeric(window(lag(data[,subtb[,1]],-1),start=it0,end=it0))
+        ##Submit  lag as a starting value, since at current time the values might not exist
 
         
         fogs <- optim(par=log(x0),fn=mod.o,gr=mod.ograd,...)
-        res <- rbind(res,exp(fogs$par))
+        
+        ind <- as.numeric(window(indt,start=it0,end=it0))
+        ###If some values were not NA, leave them intact
+        fc <- exp(fogs$par)
+        cd <- data[ind,subtb[,1]]
+        if(sum(!is.na(cd))>0) {
+            fc[!is.na(cd)] <- cd[!is.na(cd)]
+        }
+        
+        data[ind,subtb[,1]] <- fc
+        res <- rbind(res,fc)
     }
     res <- ts(res,start=start,end=end,frequency=4)
     colnames(res) <- subtb[,1]
-    res
+    list(res=res,data=data)
 }
 
 eqs.optim <- function(eqmod,subtable) {
@@ -113,6 +125,31 @@ qpadd <- function(start,end) {
     res
 }
 
+simplefc <- function(data,tb,ahead) {
+    require(tseries)
+    require(forecast)
+    
+    ff <- numeric()
+    for(nm in colnames(data)) {
+        trans <- tb$FT[tb$name==nm]
+        if(trans=="skip") {
+            res <- rep(data[dim(data)[1],nm],ahead)
+        }
+        else {
+            if(trans=="log") {
+                res <- forecast(auto.arima(log(na.omit(data[,nm]))),h=ahead)
+                res <- exp(res$mean)
+            }
+            else {
+                res <- forecast(auto.arima(na.omit(data[,nm])),h=ahead)
+                res <- res$mean
+            }
+        }
+        ff <- cbind(ff,res)
+    }
+    colnames(ff) <- colnames(data)
+    ff
+}
 plot.forecast <- function(x,fc,varn,labels) {
 
     ##Find the variables who do not have seasonality removed.
@@ -309,4 +346,40 @@ edlog <- function(expr) {
     
     
     return(expr)
+}
+
+
+produce.tb1 <- function(data) {
+    f <- list(expression((y_r_sa/lag(y_r_sa,-1)-1)*100),
+              expression(w_b_sa/lag(w_b_sa,-1)*100),
+              expression(w_b_sa),
+              expression((x_r_sa-m_r_sa)/y_r_sa),
+              expression((c_r_sa/lag(c_r_sa,-1)-1)*100),
+              expression((i_r_sa/lag(i_r_sa,-1)-1)*100),
+              expression((y_n_sa/lag(y_n_sa,-1)-1)*100)
+              )
+    nf <- c("BVP augimas, grandine susietos apimties augimas, proc.",
+            "Vidutinio mėnesinio bruto darbo užmokesčio indeksai, ankstesnis laikotarpis = 100",
+            "Vidutinis mėnesinis bruto darbo užmokestis, Lt",
+            "Prekių ir paslaugų balansas, proc. BVP",
+            "Vartojimo augimas, grandine susietos apimties augimas, proc.",
+            "Bendrojo pagrindinio kapitalo formavimo augimas, grandine susietos apimties augimas, proc.",
+            "BVP augimas to meto kainomis, proc.")
+    
+    tld <- data
+    tld <- cbind(qpadd(start(data),end(data)),tld)
+
+    colnames(tld) <- c("year","quarter",colnames(data))
+
+    agm <- recast(as.data.frame(tld),year~variable,mean,id.var=c("year","quarter"))
+    ags <- recast(as.data.frame(tld),year~variable,sum,id.var=c("year","quarter"))
+
+    agm <- ts(agm[,-1],start=start(data)[1])
+    ags <- ts(ags[,-1],start=start(data)[1]) ## Will not be used for the mooment
+    
+    rl <- lapply(f,eval,envir=as.list(agm))
+    res <- t(sapply(rl,window,start=2008,end=2012))
+    res <- data.frame(Rodiklis=nf,res)
+    names(res)[-1] <- 2008:2012
+    res
 }

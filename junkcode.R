@@ -101,3 +101,8 @@ upper[19] <- log(100)
 fogs <- optim(par=log(x0),fn=mod.o,gr=mod.ograd,method="L-BFGS-B",control=list(trace=1))
 
 
+
+tld <- ladt
+tld <- cbind(qpadd(start(ladt),end(ladt)),ladt)
+
+colnames(tld) <- c("year","quarter",colnames(ladt))
