@@ -67,16 +67,6 @@ for(nm in exnm) {
     window(ladt[,nm],start=end(x)+c(0,1)) <- fc$mean
 }
 
-#exf <- sapply(ff,function(x)x$mean)
-#colnames(exf) <- exnm
-
-#exff <- simplefc(window(ladt[,exnm],end=endl),ee[ee$exo=="Exog",],fch)
-
-
-#for(nm in exnm) {
-#    window(ladt[,nm],start=endl+c(0,1)) <- exf[,nm]
-#}
-
 lower <- rep(-Inf,26)
 upper <- rep(Inf,26)
 
@@ -98,48 +88,41 @@ xyplot(gofd,screens=rep(1:no,2),col=c(rep("blue",no),rep("red",no)))
 xyplot(ftry$data[,colnames(endol)])
 
 
-#nmi <- read.csv("data/LEMAMmod_aprasymas.csv")
-
-#nmi[,1] <- tolower(as.character(nmi[,1]))
-
-#nmi <- data.frame(name=nmi[,1],saname=paste(nmi[,1],"_sa",sep=""),nicename=nmi[,2])
-
-#nmi <- nmi[order(nmi[,1]),]
-
-#res <- t(ftry)
-#rownames(res) <- NULL
-
-#res <- data.frame(as.character(nmi[match(colnames(endol),as.character(nmi[,2])),3]),res)
-
-
-#names(res) <- c("Rodiklis",paste("2008 K",1:4,sep=""))
-
 require(xtable)
 require(reshape)
+
 res <- produce.tb1(ftry$data)
 
-write.table(res,file="data.csv",row.names=FALSE,sep="\t")
 
-butt <- paste("<input type='submit' value='Vaizduoti' id='s",0:(nrow(res)-1),"'/>",sep="")
 
-hres <- data.frame(res,butt)
-colnames(hres) <- c("Rodiklis",2008:2012,"")
+sc2 <- ladt
 
-print(xtable(hres),type="html",include.rows=FALSE,file="ftable.html",html.table.attributes='border="1" id="table1",cellpading="2"',sanitize.text.function=function(x)x)
+window(sc2[,"i_l"],start=c(2009,1)) <- 1.5*window(sc2[,"i_l"],start=c(2009,1))
 
-#aldt <- adt
+ftry2 <- eqforecast(start=c(2009,1),end=c(2012,4),eqR,ee,data=sc2,lower=lower,upper=upper,method="L-BFGS-B",control=list(trace=1))
 
-#ialnm <- intersect(colnames(adt),colnames(ladt))
-#sdalnm <- setdiff(colnames(ladt),colnames(adt))
+res2 <- produce.tb1(ftry2$data)
 
-#aldt[,ialnm] <- ladt[,ialnm]
+sc3 <- ladt
 
-#alnm <- colnames(aldt)
+window(sc3[,"i_l"],start=c(2009,1)) <- 0.5*window(sc3[,"i_l"],start=c(2009,1))
 
-#aldt <- cbind(aldt,ladt[,sdalnm])
+ftry3 <- eqforecast(start=c(2009,1),end=c(2012,4),eqR,ee,data=sc3,lower=lower,upper=upper,method="L-BFGS-B",control=list(trace=1,maxit=50,factr=1e-3,pgtol=1e-8))
 
-#colnames(aldt) <- c(alnm,sdalnm)
+res3 <- produce.tb1(ftry3$data)
 
-#save(eqR,endoexo,aldt,lower,upper,nmi,ftry,file="lemasta.RData")
+csvhtpair(res,1,"scen01")
+csvhtpair(res2,2,"scen02")
+csvhtpair(res3,3,"scen03")
+
+
+dd <- t(ladt[,ee$name[ee$exo=="Exog"]])[,11:14]
+
+dd <- data.frame(rownames(dd),dd)
+
+aa <- produce.form(dd)
+
+print(xtable(aa),type="html",include.rows=FALSE,file="form1.html",html.table.attributes='border="1" id="table1",cellpading="2"',sanitize.text.function=function(x)x)
+
 
 save(eqR,ee,adt,lower,upper,ftry,file="lemasta.RData")

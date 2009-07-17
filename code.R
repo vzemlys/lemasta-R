@@ -383,3 +383,40 @@ produce.tb1 <- function(data) {
     names(res)[-1] <- 2008:2012
     res
 }
+
+csvhtpair <- function(res,suffix,cssattr) {
+    dtname <- paste("data",suffix,".csv",sep="")
+    htname <- paste("ftable",suffix,".html",sep="")
+    write.table(res,file=dtname,row.names=FALSE,quote=FALSE,sep="\t")
+
+    butt <- paste("<input type='submit' value='Lyginti' ",cssattr,"='",cssattr,"'/>",sep="")
+
+    hres <- data.frame(res,butt)
+    colnames(hres) <- c(names(res),"")
+
+    print(xtable(hres),type="html",include.rows=FALSE,file=htname,html.table.attributes='border="1" id="table1",cellpading="2"',sanitize.text.function=function(x)x)
+
+}
+produce.form <- function(etb,prefix="") {
+
+    no <- dim(etb)[1]
+    nms <- paste(prefix,"egzo",1:no,"[]",sep="")
+    
+    col.fun <- function(col,nm) {
+        col <- prettyNum(col)
+        vals <- paste("<input name='",nm,"' value=",col," type='text' size='5'/>",sep="")
+        vals
+    }
+    cols <- sapply(etb[,-1],col.fun,nm=nms)
+    first <- paste(etb[,1],"<input name='",nms,"' value='",etb[,1],"' type='hidden'/>",sep="")
+    res <- data.frame(first,cols)
+
+    names(res) <- c("Rodiklis",names(etb)[-1])
+    res
+
+}
+
+todf <- function(x) {
+    data.frame(row=2:length(x)-1,variable=x[1],value=as.numeric(x[-1]))
+
+}
