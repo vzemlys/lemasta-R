@@ -111,18 +111,31 @@ ftry3 <- eqforecast(start=c(2009,1),end=c(2012,4),eqR,ee,data=sc3,lower=lower,up
 
 res3 <- produce.tb1(ftry3$data)
 
-csvhtpair(res,1,"scen01")
-csvhtpair(res2,2,"scen02")
-csvhtpair(res3,3,"scen03")
+csvhtpair(res,1,"varno")
+csvhtpair(res2,2,"varno")
+csvhtpair(res3,3,"varno")
 
 
 dd <- t(ladt[,ee$name[ee$exo=="Exog"]])[,11:14]
 
 dd <- data.frame(rownames(dd),dd)
 
-aa <- produce.form(dd)
+dd <- dd[-c(1,2,11),]
 
-print(xtable(aa),type="html",include.rows=FALSE,file="form1.html",html.table.attributes='border="1" id="table1",cellpading="2"',sanitize.text.function=function(x)x)
+names(dd) <- c("Rodiklis",2009:2012)
 
+a1 <- produce.form(dd,pref="scen1")
 
-save(eqR,ee,adt,lower,upper,ftry,file="lemasta.RData")
+dd[1,3] <- 20
+a2 <- produce.form(dd,pref="scen2")
+
+dd[1,3] <- 30
+a3 <- produce.form(dd,pref="scen3")
+
+print(xtable(a1),type="html",include.rows=FALSE,file="form1.html",html.table.attributes='border="1" id="table1",cellpading="2"',sanitize.text.function=function(x)x)
+
+print(xtable(a2),type="html",include.rows=FALSE,file="form2.html",html.table.attributes='border="1" id="table1",cellpading="2"',sanitize.text.function=function(x)x)
+
+print(xtable(a3),type="html",include.rows=FALSE,file="form3.html",html.table.attributes='border="1" id="table1",cellpading="2"',sanitize.text.function=function(x)x)
+
+save(eqR,ee,ladt,lower,upper,ftry,file="lemasta.RData")

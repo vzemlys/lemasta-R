@@ -384,12 +384,17 @@ produce.tb1 <- function(data) {
     res
 }
 
-csvhtpair <- function(res,suffix,cssattr) {
+csvhtpair <- function(res,suffix,cssattr="varno") {
+##cssattr is very important, since it is used in javascript code
+##to determine which variable is being compared
+    
+    require(xtable)
     dtname <- paste("data",suffix,".csv",sep="")
     htname <- paste("ftable",suffix,".html",sep="")
     write.table(res,file=dtname,row.names=FALSE,quote=FALSE,sep="\t")
 
-    butt <- paste("<input type='submit' value='Lyginti' ",cssattr,"='",cssattr,"'/>",sep="")
+    ids <- 1:dim(res)[1]-1
+    butt <- paste("<input type='submit' value='Lyginti' ",cssattr,"='",ids,"'/>",sep="")
 
     hres <- data.frame(res,butt)
     colnames(hres) <- c(names(res),"")
@@ -403,7 +408,7 @@ produce.form <- function(etb,prefix="") {
     nms <- paste(prefix,"egzo",1:no,"[]",sep="")
     
     col.fun <- function(col,nm) {
-        col <- prettyNum(col)
+        col <- prettyNum(round(col,2))
         vals <- paste("<input name='",nm,"' value=",col," type='text' size='5'/>",sep="")
         vals
     }
@@ -419,4 +424,11 @@ produce.form <- function(etb,prefix="") {
 todf <- function(x) {
     data.frame(row=2:length(x)-1,variable=x[1],value=as.numeric(x[-1]))
 
+}
+
+doforecast <- function(x,sceno) {
+    ftry <- eqforecast(start=c(2009,1),end=c(2012,4),eqR,ee,data=ladt,lower=lower,upper=upper,method="L-BFGS-B",control=list(trace=1,maxit=50,factr=1e-3,pgtol=1e-8))
+    res <- produce.tb1(ftry$data)
+    
+    csvhtpair(res,sceno);
 }
