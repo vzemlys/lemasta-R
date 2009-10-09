@@ -1,7 +1,7 @@
 require(tseries)
 require(lattice)
 
-eqforecast <- function(start,end,eq,endoexo,data,...) {
+eqforecast <- function(start,end,eq,endoexo,data,leave=TRUE,...) {
     exonames <- as.character(endoexo$name[endoexo$exo=="Exog"])
 
     noendog <- table(endoexo$exo)["Endog"]
@@ -43,15 +43,17 @@ eqforecast <- function(start,end,eq,endoexo,data,...) {
 
         
         fogs <- optim(par=log(x0),fn=mod.o,gr=mod.ograd,...)
+        #fogs <- optim(par=log(x0),fn=mod.o,...)
         
         ind <- as.numeric(window(indt,start=it0,end=it0))
         ###If some values were not NA, leave them intact
         fc <- exp(fogs$par)
-        cd <- data[ind,subtb[,1]]
-        if(sum(!is.na(cd))>0) {
-            fc[!is.na(cd)] <- cd[!is.na(cd)]
+        if(leave) {
+            cd <- data[ind,subtb[,1]]
+            if(sum(!is.na(cd))>0) {
+                fc[!is.na(cd)] <- cd[!is.na(cd)]
+            }
         }
-        
         data[ind,subtb[,1]] <- fc
         res <- rbind(res,fc)
     }
@@ -61,6 +63,8 @@ eqforecast <- function(start,end,eq,endoexo,data,...) {
 }
 
 eqs.optim <- function(eqmod,subtable) {
+
+    browser()
     eqo <- sapply(eqmod,function(l) {
         aa <- paste(deparse(l,wid=500),collapse="")
         paste("(",aa,")^2",sep="")
