@@ -348,8 +348,7 @@ edlog <- function(expr) {
     return(expr)
 }
 
-
-produce.tb1 <- function(data) {
+produce.tb1 <- function(data){
     f <- list(expression((y_r_sa/lag(y_r_sa,-1)-1)*100),
               expression(w_b_sa/lag(w_b_sa,-1)*100),
               expression(w_b_sa),
@@ -383,7 +382,6 @@ produce.tb1 <- function(data) {
     names(res)[-1] <- 2008:2012
     res
 }
-
 csvhtpair <- function(res,suffix,cssattr="varno") {
 ##cssattr is very important, since it is used in javascript code
 ##to determine which variable is being compared

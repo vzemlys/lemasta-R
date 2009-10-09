@@ -42,7 +42,9 @@ eqR <- lapply(eqstrm,function(l)eviewstoR(l,varnames=colnames(ladt)))
 
 ee <- read.csv("data/LEMAMmod_endoexo.csv")
 
+
 ee <- data.frame(name=tolower(as.character(ee[,1])),exo=ee[,2],FT=ee[,3])
+
 
 endl <- end(ladt)
 
