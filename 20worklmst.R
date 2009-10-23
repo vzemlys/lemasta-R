@@ -15,12 +15,13 @@ require(tseries)
 
 ad <- read.csv("data/all_data_all_data.csv")
 sad <-read.csv("data/data_sa_Feuille1.csv")
+
 lad <- read.csv("data/LEMAMmod_lemmdata.csv")
 
 adt <- ts(ad[,-1],start=c(1995,1),end=c(2009,4),freq=4)
 sadt <- ts(sad[,-1],start=c(1995,1),end=c(2009,4),freq=4)
+ladt <- ts(lad[,-1],start=c(1995,1),end=c(2009,4),freq=4)
 
-ladt <- ts(lad[, -1],start=c(1995,1),end=c(2009,1),freq=4)
 
 adt <- window(adt,start=c(1995,1),end=c(2009,1))
 sadt <- window(sadt,start=c(1995,1),end=c(2009,1))
@@ -28,7 +29,7 @@ sadt <- window(sadt,start=c(1995,1),end=c(2009,1))
   
 colnames(sadt) <- tolower(colnames(sadt))
 colnames(adt)  <- tolower(colnames(adt))
-colnames(ladt) <- tolower(colnames(ladt))
+colnames(ladt)  <- tolower(colnames(ladt))
   
 
 source("code.R")

@@ -64,7 +64,6 @@ eqforecast <- function(start,end,eq,endoexo,data,leave=TRUE,...) {
 
 eqs.optim <- function(eqmod,subtable) {
 
-    browser()
     eqo <- sapply(eqmod,function(l) {
         aa <- paste(deparse(l,wid=500),collapse="")
         paste("(",aa,")^2",sep="")
@@ -352,39 +351,53 @@ edlog <- function(expr) {
     return(expr)
 }
 
-produce.tb1 <- function(data){
-    f <- list(expression((y_r_sa/lag(y_r_sa,-1)-1)*100),
-              expression(w_b_sa/lag(w_b_sa,-1)*100),
-              expression(w_b_sa),
-              expression((x_r_sa-m_r_sa)/y_r_sa),
-              expression((c_r_sa/lag(c_r_sa,-1)-1)*100),
-              expression((i_r_sa/lag(i_r_sa,-1)-1)*100),
-              expression((y_n_sa/lag(y_n_sa,-1)-1)*100)
-              )
-    nf <- c("BVP augimas, grandine susietos apimties augimas, proc.",
-            "Vidutinio mėnesinio bruto darbo užmokesčio indeksai, ankstesnis laikotarpis = 100",
-            "Vidutinis mėnesinis bruto darbo užmokestis, Lt",
-            "Prekių ir paslaugų balansas, proc. BVP",
-            "Vartojimo augimas, grandine susietos apimties augimas, proc.",
-            "Bendrojo pagrindinio kapitalo formavimo augimas, grandine susietos apimties augimas, proc.",
-            "BVP augimas to meto kainomis, proc.")
+produce.tb.sum <- function(data,formulas,fnames,years=2005:2011){
+    require(plyr)
+    require(reshape)
+    require(foreach)
+
+    years <- min(years):max(years)
     
+    
+    f <- paste("")
     tld <- data
     tld <- cbind(qpadd(start(data),end(data)),tld)
 
     colnames(tld) <- c("year","quarter",colnames(data))
 
-    agm <- recast(as.data.frame(tld),year~variable,mean,id.var=c("year","quarter"))
     ags <- recast(as.data.frame(tld),year~variable,sum,id.var=c("year","quarter"))
 
-    agm <- ts(agm[,-1],start=start(data)[1])
     ags <- ts(ags[,-1],start=start(data)[1]) ## Will not be used for the mooment
+
+    level <- foreach(l=formulas) %do% eval(parse(text=l),envir=as.list(ags))
     
-    rl <- lapply(f,eval,envir=as.list(agm))
-    res <- t(sapply(rl,window,start=2008,end=2012))
-    res <- data.frame(Rodiklis=nf,res)
-    names(res)[-1] <- 2008:2012
+
+    
+
+    
+    growth <- foreach(el=level) %do% { (el/lag(el,-1)-1)*100}
+
+    gdp <- level[[1]]
+    gdpshare <- foreach(el=level) %do% {(el/gdp)*100 }
+    
+   
+    res <- list(level=level,growth=growth,gdpshare=gdpshare)
+
+
+    nmr <- names(res)
+    
+    res <- foreach(el=res) %do% {
+        ll <- t(sapply(el,window,start=min(years),end=max(years)))
+        dt <- data.frame(Rodiklis=fnames,ll)
+        names(dt)[-1] <- years
+        dt
+    }
+    
+    names(res) <- nmr
+
     res
+    
+    
 }
 csvhtpair <- function(res,suffix,cssattr="varno") {
 ##cssattr is very important, since it is used in javascript code
