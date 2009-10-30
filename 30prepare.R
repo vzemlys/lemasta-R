@@ -1,3 +1,9 @@
+rm(list=ls())
+
+library(tseries)
+library(lattice)
+library(nleqslv)
+library(ggplot2)
 
 #################################################################
 #Read data
@@ -41,14 +47,11 @@ ee <- rbind(data.frame(name=colnames(exof),exo="Exog"),
 
 ################################################################
 ##Test the model
-lower <- rep(-Inf,length(eqR))
-upper <- rep(Inf,length(eqR))
 
-upper[19] <- log(100)
-
-system.time(ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=ladt,leave=TRUE,lower=lower,upper=upper,method="L-BFGS-B",control=list(trace=1,factr=1e-4,pgtol=1e-08,maxit=20)))
+system.time(ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=ladt,leave=TRUE,use.jacobian=TRUE))
 
 #system.time(ftry <- eqforecast(start=c(2000,1),end=c(2008,4),eqR,ee,data=ladt,leave=FALSE,lower=lower,upper=upper,method="L-BFGS-B",control=list(trace=1)))
+
 
 endol <- ladt[,colnames(ftry$res)]
 
@@ -60,4 +63,4 @@ no <- dim(endol)[2]
 
 xyplot(gofd,screens=rep(1:no,2),col=c(rep("blue",no),rep("red",no)))
 
-xyplot(ftry$data[,colnames(endol)])
+

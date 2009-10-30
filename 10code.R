@@ -2,21 +2,12 @@ require(tseries)
 require(lattice)
 require(nleqslv)
 
-eqforecast <- function(start,end,eq,endoexo,data,leave=TRUE,...) {
+eqforecast <- function(start,end,eq,endoexo,data,leave=TRUE,use.jacobian=TRUE,...) {
     exonames <- as.character(endoexo$name[endoexo$exo=="Exog"])
 
     noendog <- table(endoexo$exo)["Endog"]
     subtb <- cbind(as.character(endoexo$name[endoexo$exo=="Endog"]),paste("y[",1:noendog,"]",sep=""))
     
-    mod.o <- function(y) {
-        as.numeric(eval(eqoy,list(y=y)))
-    }
-
-    mod.ograd <- function(y) {
-        res <- sapply(eqogy,function(l)as.numeric(eval(l,list(y=y))))
-        res
-    }
-
     mod.fn <- function(x) {
         sapply(eqosy,function(l)as.numeric(eval(l,list(y=x))))
     }
@@ -42,43 +33,24 @@ eqforecast <- function(start,end,eq,endoexo,data,leave=TRUE,...) {
         
         
         eqmod <- lapply(eqit,function(l)eval(l,as.list(data)))
-       # browser()
-        
-       # eqs <- eqs.optim(eqmod,subtb)
-       # eqoy <- eqs$fn
-       # eqogy <- eqs$grad
 
-        eqq <- eqs.nleqslv(eqmod,subtb)
+        eqq <- eqs.nleqslv(eqmod,subtb,use.jacobian=use.jacobian)
         
         eqosy <- eqq$fn
         eqosgy <- eqq$grad
 
-        
-        
-        #browser()
         x0 <- as.numeric(window(lag(data[,subtb[,1]],-1),start=it0,end=it0))
-        ##Submit  lag as a starting value, since at current time the values might not exist
-        
-        
-        #fogs <- optim(par=log(x0),fn=mod.o,gr=mod.ograd,...)
-        #fogs <- optim(par=log(x0),fn=mod.o,method="Nelder-Mead")
 
-        #fogs <- optim(par=x0,fn=mod.o,method="Nelder-Mead")
-        
-        #fogs <- optim(par=fogs$par,fn=mod.o,...)
 
-        fogs <- nleqslv(x0,mod.fn,jac=mod.jac)
-        fogs$par <- fogs$x
-
-        #fogs <- BBsolve(x0,mod.fn)
-        
-        #browser()
+        if(use.jacobian)    
+          fogs <- nleqslv(x0,mod.fn,jac=mod.jac,...)
+        else
+          fogs <- nleqslv(x0,mod.fn,...)
+     
         ind <- as.numeric(window(indt,start=it0,end=it0))
         ###If some values were not NA, leave them intact
-        
-        
-        #fc <- exp(fogs$par)
-        fc <- fogs$par
+      
+        fc <- fogs$x
         if(leave) {
             cd <- data[ind,subtb[,1]]
             if(sum(!is.na(cd))>0) {
@@ -94,34 +66,22 @@ eqforecast <- function(start,end,eq,endoexo,data,leave=TRUE,...) {
     list(res=res,data=data)
 }
 
-eqs.optim <- function(eqmod,subtable) {
+eqs.nleqslv <- function(eqmod,subtable,use.jacobian=TRUE) {
 
-   
-    eqo <- sapply(eqmod,function(l) {
-        aa <- paste(deparse(l,wid=500),collapse="")
-        paste("(",aa,")^2",sep="")
-    })
-
-    eqo <- parse(text=paste(eqo,collapse="+"))
-
-    eqo <- subvars(eqo[[1]],cbind(subtable[,1],subtable[,1]),make.exp=TRUE)
-
-    eqog <- lapply(subtable[,1],function(l)D(eqo,name=l))
-
-    eqoy <- subvars(eqo,subtable)
-    eqogy <-lapply(eqog,function(l)subvars(l,subtable))
-
-    list(fn=eqoy,grad=eqogy)
-
-}
-eqs.nleqslv <- function(eqmod,subtable) {
-  
-    eqog <- lapply(subtable[,1],function(l)lapply(eqmod,function(ll,nm=l)D(ll,name=nm)))
-    
     eqoy <-lapply(eqmod,function(l)subvars(l,subtable))
-    eqogy <- lapply(eqog,function(l)lapply(l,function(ll)subvars(ll,subtable)))
+
+    if(use.jacobian) {
+        eqog <- lapply(subtable[,1],function(l)lapply(eqmod,function(ll,nm=l)D(ll,name=nm)))
+    
+
+        eqogy <- lapply(eqog,function(l)lapply(l,function(ll)subvars(ll,subtable)))
+    }
+    else
+      eqogy <- NULL
+    
     list(fn=eqoy,grad=eqogy)
 }
+
 eviewstoR <-function(str,varnames) {
     varnames <- tolower(varnames)
     str <- tolower(str)
