@@ -131,3 +131,48 @@ todf <- function(x) {
     data.frame(row=2:length(x)-1,variable=x[1],value=as.numeric(x[-1]))
 
 }
+
+
+compare.fit <- function(fit,data) {
+    require(ggplot2)
+    ##fit and data are timeseries matrixes. Data may be have more
+    ##columns than fit
+
+    data <- data[,colnames(fit)]
+
+    dt <- melt(ts.2.arr(data))
+    ft <- melt(ts.2.arr(fit))
+    
+    colnames(dt)[1:2] <- c("time","variable") ->colnames(ft)[1:2]
+
+    pp <- qplot(x=time,y=value,data=dt,geom="line")+geom_line(data=ft,colour="red")+facet_wrap(~variable,scales="free_y")
+    pp
+    
+}
+
+ts.2.arr <- function(x) {
+    array(x,dim(x),dimnames=list(time(x),colnames(x)))
+}
+
+ch <- ladt[,c("c_r_sa_0","i_r_sa_0","y_nonx_sa_0")]
+colnames(ch) <- c("c_r_sa","i_r_sa","y_nonx_sa")
+
+
+gofdc <- cbind(gofd,ch)
+
+colnames(gofdc) <- c(colnames(gofd),paste("x_",colnames(ftry$res),sep=""))
+
+no <- dim(endol)[2]
+
+xyplot(gofdc,screens=rep(1:no,3),col=c(rep("blue",no),rep("red",no),rep("green",no)))
+
+
+cc <- cbind(ch,ladt[,setdiff(colnames(ladt),colnames(ch))])
+colnames(cc) <- c(colnames(ch),setdiff(colnames(ladt),colnames(ch)))
+
+gg <- ts(rbind(window(ladt[,colnames(ftry$res)],end=c(2006,4)),ftry$res),start=start(ladt),freq=frequency(ladt))
+
+dd <- cbind(gg,ladt[,setdiff(colnames(ladt),colnames(gg))])
+colnames(dd) <- c(colnames(gg),setdiff(colnames(ladt),colnames(gg)))
+
+window(ladt[,c("c_r_sa_0","i_r_sa_0","y_nonx_sa_0")],start=c(2007,1))

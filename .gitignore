@@ -7,7 +7,7 @@
 *.pdf
 *.png
 *.ps
-*.html
+#*.html
 
 #Ignore emacs and vim temporary files
 *.swp

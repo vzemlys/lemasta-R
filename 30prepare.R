@@ -4,6 +4,11 @@ library(tseries)
 library(lattice)
 library(nleqslv)
 library(ggplot2)
+library(foreach)
+library(plyr)
+library(reshape)
+
+source("10code.R")
 
 #################################################################
 #Read data
@@ -15,7 +20,7 @@ colnames(ladt)  <- tolower(colnames(ladt))
 ###Paskutinis stulpelis kartojasi du kartus, ismetu ji.
 ladt <- ladt[,-ncol(ladt)]
 
-source("10code.R")
+
 
 ################################################################
 ###Convert eviews formulas to R
@@ -44,23 +49,5 @@ for(nm in colnames(exof)) {
 ee <- rbind(data.frame(name=colnames(exof),exo="Exog"),
             data.frame(name=setdiff(colnames(ladt),colnames(exof)),exo="Endog")
             )
-
-################################################################
-##Test the model
-
-system.time(ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=ladt,leave=TRUE,use.jacobian=TRUE))
-
-#system.time(ftry <- eqforecast(start=c(2000,1),end=c(2008,4),eqR,ee,data=ladt,leave=FALSE,lower=lower,upper=upper,method="L-BFGS-B",control=list(trace=1)))
-
-
-endol <- ladt[,colnames(ftry$res)]
-
-
-gofd <- cbind(endol,ftry$res)
-colnames(gofd) <- c(colnames(endol),paste("f_",colnames(ftry$res),sep=""))
-
-no <- dim(endol)[2]
-
-xyplot(gofd,screens=rep(1:no,2),col=c(rep("blue",no),rep("red",no)))
 
 
