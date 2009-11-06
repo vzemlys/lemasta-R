@@ -443,12 +443,12 @@ inverse.tb <- function(x,meta) {
     #rezultatas bus metinė laiko eilutė kurioje vienetai bus
     #tokie patys kaip ir originaliuose duomenyse.
 
-    years <- as.numeric(colnames(x)[-1])
+    years <- as.numeric(colnames(x)[-2:-1])
 
     x <- x[match(as.character(meta$Rodiklis),as.character(x$Rodiklis)),]
     nm <- as.character(meta$Name)
 
-    tt <- ts(t(x[,-1]),start=years[1])
+    tt <- ts(t(x[,-2:-1]),start=years[1])
     colnames(tt) <- nm
            
     formulas <- as.character(meta$Inverse)
@@ -464,6 +464,7 @@ produce.tb <- function(x,meta,years=2006:2011,gdpshare=NULL){
    
     formulas <-as.character(meta[,2])
     fnames <- as.character(meta[,1])
+    
       
     years <- min(years):max(years)
   
@@ -485,8 +486,8 @@ produce.tb <- function(x,meta,years=2006:2011,gdpshare=NULL){
     
     res <- foreach(el=res) %do% {
         ll <- t(sapply(el,window,start=min(years),end=max(years)))
-        dt <- data.frame(Rodiklis=fnames,ll)
-        names(dt)[-1] <- years
+        dt <- data.frame(Rodiklis=fnames,Vienetai=as.character(meta$Vienetai),ll)
+        names(dt)[-2:-1] <- years
         dt
     }
     
@@ -496,7 +497,17 @@ produce.tb <- function(x,meta,years=2006:2011,gdpshare=NULL){
     
 }
 
-csvhtpair <- function(res,suffix,cssattr="varno",catalogue="") {
+csvht <- function(tb,scenno,startvar=0,var="varno",scen="scenno",catalogue="") {
+    require(xtable)
+    dtln <- paste(catalogue,"datalev",suffix,".csv",sep="")
+    dtgr <- paste(catalogue,"datagro",suffix,".csv",sep="")
+    htname <- paste(catalogue,"ftable",suffix,".html",sep="")
+
+    dml <- dim(level)
+    dmg
+}
+
+csvhtpair <- function(res,suffix,cssattr="varno",scenattr="scenno",catalogue="") {
 ##cssattr is very important, since it is used in javascript code
 ##to determine which variable is being compared
     
@@ -508,8 +519,12 @@ csvhtpair <- function(res,suffix,cssattr="varno",catalogue="") {
     ids <- 1:dim(res)[1]-1
     butt <- paste("<input type='submit' value='Lyginti' ",cssattr,"='",ids,"'/>",sep="")
 
-    hres <- data.frame(res,butt)
-    colnames(hres) <- c(names(res),"")
+    radiol <- paste("<input type='radio' name='show",suffix,"type",ids,"' value='Level' ",cssattr,"='",ids,"' ",scenattr,"='",suffix, "' checked'/>",sep="")
+    radiog <- paste("<input type='radio' name='show",suffix,"type",ids,"' value='Growth' ",cssattr,"='",ids,"' ",scenattr,"='",suffix, "'/>",sep="")
+    #radio <- paste(radiol,radiog,sep="")
+    
+    hres <- data.frame(res,radiol,radiog,butt)
+    colnames(hres) <- c(names(res),"Lygis","Augimas","")
 
     print(xtable(hres),type="html",include.rows=FALSE,file=htname,html.table.attributes='border="1" id="table1",cellpading="2"',sanitize.text.function=function(x)x)
 
