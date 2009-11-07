@@ -26,32 +26,37 @@ flydt <- q2y.meta(ftry$data,q2y)
 mreal <- read.csv("tables/tb1real.csv")
 mnom <-  read.csv("tables/tb1nom.csv")
 
+mprice <- read.csv("tables/tb2.csv")
+mwf <- read.csv("tables/tb3.csv")
+
 tbreal1 <- produce.tb(flydt,mreal,years=2006:2011,gdpshare=as.character(mreal[1,2]))
 
 tbnom1 <- produce.tb(flydt,mnom,years=2006:2011,as.character(mnom[1,2]))
 
+tb2 <- produce.tb(flydt,mprice,years=2006:2011)
 
-csvhtpair(tbreal1$growth,1,"varno",catalogue="output/")
-csvhtpair(tbreal1$growth,2,"varno",catalogue="output/")
-csvhtpair(tbreal1$growth,3,"varno",catalogue="output/")
-
-############################################################
-##Produce forms
+tb3 <- produce.tb(flydt,mwf,years=2006:2011)
 
 dd <- exotb$level
 
-a1 <- produce.form(dd,start=2009,pref="scen1")
-a2 <- produce.form(dd,start=2009,pref="scen2")
-a3 <- produce.form(dd,start=2009,pref="scen3")
+tb1 <- list(real=tbreal1,nominal=tbnom1)
+tb2 <- list(real=tb2)
+tb3 <- list(real=tb3)
 
-print(xtable(a1),type="html",include.rows=FALSE,file="output/form1.html",html.table.attributes='border="1" id="table1",cellpading="2"',sanitize.text.function=function(x)x)
+scen <- list(table=list(tb.conform(tb1),tb2,tb3),form=list(data=dd,start=2009,pref="scen"))
 
-print(xtable(a2),type="html",include.rows=FALSE,file="output/form2.html",html.table.attributes='border="1" id="table1",cellpading="2"',sanitize.text.function=function(x)x)
+scen1 <- scen.2.xml(scen,1,"Scenarijus 1")
+scen2 <- scen.2.xml(scen,2,"Scenarijus 2")
+scen3 <- scen.2.xml(scen,3,"Scenarijus 3")
 
-print(xtable(a3),type="html",include.rows=FALSE,file="output/form3.html",html.table.attributes='border="1" id="table1",cellpading="2"',sanitize.text.function=function(x)x)
+xml <- "<lemasta>"
+xml <- paste(xml,scen1,sep="")
+xml <- paste(xml,scen2,sep="")
+xml <- paste(xml,scen3,sep="")
+xml <- paste(xml,"</lemasta>",sep="")
+write(xml,file="output/initial.xml")
 
-
-save(ee,eqR,ladt,exo2y,q2y,mreal,mnom,file="output/lemasta.RData")
+save(ee,eqR,ladt,exo2y,q2y,mreal,mnom,mprice,mwf,file="output/lemasta.RData")
 
 system("cp 10code.R output/code.R")
 

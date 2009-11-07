@@ -497,14 +497,122 @@ produce.tb <- function(x,meta,years=2006:2011,gdpshare=NULL){
     
 }
 
-csvht <- function(tb,scenno,startvar=0,var="varno",scen="scenno",catalogue="") {
-    require(xtable)
-    dtln <- paste(catalogue,"datalev",suffix,".csv",sep="")
-    dtgr <- paste(catalogue,"datagro",suffix,".csv",sep="")
-    htname <- paste(catalogue,"ftable",suffix,".html",sep="")
+tb.conform <- function(tb) {
+    ##Find the longest table, padd the other with NAs
+    require(foreach)
 
-    dml <- dim(level)
-    dmg
+    if(!is.null(tb$nominal)) {
+        foreach(r=tb$real,n=tb$nominal,nm=names(tb$real)) %do% {
+            rr <- nrow(r)
+            rn <- nrow(n)
+
+            if(rr<rn) {
+                res <- n
+                grr <- r$Rodiklis
+                grn <- n$Rodiklis
+#                browser()             
+                res[grn%in%levels(grr),-2:-1] <- r[,-2:-1]
+                res[!(grn%in% levels(grr)),-2:-1] <- NA
+                tb$real[[nm]] <- res
+            }
+                
+        }
+        
+    }
+    tb   
+}
+
+scen.2.xml <- function(scen,no,name="Scenarijus") {
+    
+    xml <- "<scenario>"
+    xml <- paste(xml,"<number>",no,"</number>",sep="")
+
+    xml <- paste(xml,"<name>",name,"</name>",sep="")
+
+    startvar <- 0
+    foreach(tb=scen$table,id=1:length(scen$table)) %do% {
+            xml <- paste(xml,"<table>",sep="")
+            xml <- paste(xml,"<number>",id,"</number>",sep="")
+            ht <- tb.2.html(tb,scenno=no,tbno=id,startvar=startvar)
+            xml <- paste(xml,"<data><![CDATA[",ht$str,"]]></data>",sep="")
+            xml <- paste(xml,"</table>",sep="")
+            startvar <- startvar+nrow(ht$dt)
+        }
+
+    if(!is.null(scen$form)) {
+        frm <- produce.form(scen$form$data,start=scen$form$start,pref=paste(scen$form$pref,no,sep=""),string=TRUE)
+       
+        xml <- paste(xml,"<form><![CDATA[",frm,"]]></form>",sep="")
+    }
+
+    xml <- paste(xml,"<csv>")
+    nm1 <- foreach(tb=scen$table,.combine=c) %do% names(tb)
+    nm1 <- unique(nm1)
+    
+    foreach(lev1=nm1) %do% {
+        xml <- paste(xml,"<",lev1,">",sep="")
+        nm2 <- foreach(tb=scen$table,.combine=c) %do% {
+            names(tb[[lev1]])
+        }
+        nm2 <- unique(nm2)
+        
+        foreach(lev2=nm2) %do% {
+            xml <- paste(xml,"<",lev2,">",sep="")
+            csv <- foreach(tb=scen$table,.combine=rbind) %do% tb[[lev1]][[lev2]]
+            str <- capture.output(write.table(csv,file="",row.names=FALSE,quote=FALSE,na="0",sep="\t"))
+            str <- paste(str,collapse="\n")
+            xml <- paste(xml,str,sep="")
+            xml <- paste(xml,"</",lev2,">",sep="")
+        }
+        xml <- paste(xml,"</",lev1,">",sep="")
+    }
+    xml <- paste(xml,"</csv>",sep="")
+
+    xml <- paste(xml,"</scenario>",sep="")
+    xml
+}
+
+
+tb.2.html <- function(tb,scenno,tbno,startvar=0,var="varno",scen="scenno") {
+    res <- tb$real$growth
+
+
+    nrow <- dim(res)[1]
+
+    ids <- 1:nrow-1+startvar
+    
+    butt <- paste("<input type='submit' value='Lyginti' ",var,"='",ids,"'/>",sep="")
+   
+    radiol <- paste("<input type='radio' name='lgs",scenno,"type",ids,"' value='Level' ",var,"='",ids,"' ",scen,"='",scenno, "'/>",sep="")
+
+    radiog <- paste("<input type='radio' name='lgs",scenno,"type",ids,"' value='Growth' ",var,"='",ids,"' ",scen,"='",scenno, "' checked />",sep="")
+    radios <- paste("<input type='radio' name='lgs",scenno,"type",ids,"' value='Share' ",var,"='",ids,"' ",scen,"='",scenno, "'/>",sep="")
+    
+    radior <- paste("<input type='radio' name='rn",scenno,"type",ids,"' value='Real' ",var,"='",ids,"' ",scen,"='",scenno, "' checked/>",sep="")
+
+    radion <- paste("<input type='radio' name='rn",scenno,"type",ids,"' value='Nominal' ",var,"='",ids,"' ",scen,"='",scenno, "'/>",sep="")
+
+    radio <- cbind(radiol,radiog)
+    nm.radio <- c("Lygis","Augimas")
+
+    if(!is.null(tb$real$gdpshare)) {
+        radio <- cbind(radio,radios)
+        nm.radio <- c(nm.radio,"BVP dalis")
+    }
+    if(!is.null(tb$nominal)) {
+        radio <- cbind(radio,radior,radion)
+        nm.radio <- c(nm.radio,"Realios","Veikusios")
+    }
+    hres <- data.frame(res,radio,butt)
+    
+    colnames(hres) <- c(names(res),nm.radio,"")
+    #htname <- paste(catalogue,"ftable",tbno,"-",scenno,".html",sep="")
+
+    tbattr <- paste('border="1" ,cellpading="2", id="table',tbno,'-',scenno,'"',sep="")
+
+    capture.output(str <- print(xtable(hres),type="html",include.rows=FALSE,html.table.attributes=tbattr,sanitize.text.function=function(x)x))
+    
+    list(dt=hres,str=str)
 }
 
 csvhtpair <- function(res,suffix,cssattr="varno",scenattr="scenno",catalogue="") {
@@ -530,11 +638,11 @@ csvhtpair <- function(res,suffix,cssattr="varno",scenattr="scenno",catalogue="")
 
 }
 
-produce.form <- function(etb,start=2009,prefix="") {
+produce.form <- function(etb,start=2009,prefix="",string=TRUE) {
 
     no <- dim(etb)[1]
     nms <- paste(prefix,"egzo",1:no,"[]",sep="")
-    years <- as.numeric(colnames(etb)[-1])
+    years <- as.numeric(colnames(etb)[-2:-1])
 
     shy <- as.character(years[years<start])
     wry <- as.character(years[years>=start])
@@ -554,11 +662,17 @@ produce.form <- function(etb,start=2009,prefix="") {
     wcols <- sapply(etb[,wry],write.col.fun,nm=nms)
     
     first <- paste(etb[,1],"<input name='",nms,"' value='",etb[,1],"' type='hidden'/>",sep="")
-    res <- data.frame(first,scols,wcols)
+    res <- data.frame(first,etb[,2],scols,wcols)
 
     names(res) <- c("Rodiklis",names(etb)[-1])
-    res
 
+    tbattr <- paste('border="1" ,cellpading="2", id="',prefix,'table"',sep="")
+    
+    if(string) {
+        capture.output(str <- print(xtable(res),type="html",include.rows=FALSE,html.table.attributes=tbattr,sanitize.text.function=function(x)x))
+        res <- str
+    }
+    res
 }
 
 todf <- function(x) {
