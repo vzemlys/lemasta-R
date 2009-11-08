@@ -7,6 +7,7 @@ library(ggplot2)
 library(foreach)
 library(plyr)
 library(reshape)
+library(xtable)
 
 source("10code.R")
 

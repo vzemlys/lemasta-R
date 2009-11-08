@@ -522,17 +522,20 @@ tb.conform <- function(tb) {
     tb   
 }
 
-scen.2.xml <- function(scen,no,name="Scenarijus") {
+scen.2.xml <- function(scen,no,name="Scenarijus",tbnames=NULL) {
     
     xml <- "<scenario>"
     xml <- paste(xml,"<number>",no,"</number>",sep="")
 
     xml <- paste(xml,"<name>",name,"</name>",sep="")
 
+    if(is.null(tbnames))tbnames <- paste("Lentelė",1:length(scen$table))
+    
     startvar <- 0
-    foreach(tb=scen$table,id=1:length(scen$table)) %do% {
+    foreach(tb=scen$table,id=1:length(scen$table),nmtb=tbnames) %do% {
             xml <- paste(xml,"<table>",sep="")
-            xml <- paste(xml,"<number>",id,"</number>",sep="")
+            xml <- paste(xml,"<tbno>",id,"</tbno>",sep="")
+            xml <- paste(xml,"<tbname>",nmtb,"</tbname>",sep="")
             ht <- tb.2.html(tb,scenno=no,tbno=id,startvar=startvar)
             xml <- paste(xml,"<data><![CDATA[",ht$str,"]]></data>",sep="")
             xml <- paste(xml,"</table>",sep="")
@@ -573,24 +576,34 @@ scen.2.xml <- function(scen,no,name="Scenarijus") {
 }
 
 
-tb.2.html <- function(tb,scenno,tbno,startvar=0,var="varno",scen="scenno") {
+tb.2.html <- function(tb,scenno,tbno,startvar=0,var="varno",scen="scenno",tab="tbno",tbvar="tbvarno") {
     res <- tb$real$growth
 
 
     nrow <- dim(res)[1]
 
     ids <- 1:nrow-1+startvar
+    tbid <- 1:nrow
     
-    butt <- paste("<input type='submit' value='Lyginti' ",var,"='",ids,"'/>",sep="")
-   
-    radiol <- paste("<input type='radio' name='lgs",scenno,"type",ids,"' value='Level' ",var,"='",ids,"' ",scen,"='",scenno, "'/>",sep="")
 
-    radiog <- paste("<input type='radio' name='lgs",scenno,"type",ids,"' value='Growth' ",var,"='",ids,"' ",scen,"='",scenno, "' checked />",sep="")
-    radios <- paste("<input type='radio' name='lgs",scenno,"type",ids,"' value='Share' ",var,"='",ids,"' ",scen,"='",scenno, "'/>",sep="")
+
+    lgsattr <- paste("<input type='radio' name='lgs",scenno,"type",ids,"' ",sep="")
+    rnattr <- paste("<input type='radio' name='rn",scenno,"type",ids,"' ",sep="")
+                  
+    cattr <- paste(var,"='",ids,"' ",
+                   tbvar,"='",tbid,"' ",
+                   scen,"='",scenno,"' ",
+                   tab,"='",tbno,"' ",
+                   sep="")
+
+    butt <- paste("<input type='submit' value='Lyginti' ",cattr,"/>",sep="")
+
+    radiol <- paste(lgsattr,cattr,"value='level' />",sep="")
+    radiog <- paste(lgsattr,cattr,"value='growth' checked />",sep="")
+    radios <- paste(lgsattr,cattr," value='gdpshare' />",sep="")
     
-    radior <- paste("<input type='radio' name='rn",scenno,"type",ids,"' value='Real' ",var,"='",ids,"' ",scen,"='",scenno, "' checked/>",sep="")
-
-    radion <- paste("<input type='radio' name='rn",scenno,"type",ids,"' value='Nominal' ",var,"='",ids,"' ",scen,"='",scenno, "'/>",sep="")
+    radior <- paste(rnattr,cattr, "value='real'  checked/>",sep="")
+    radion <- paste(rnattr,cattr,"value='nominal' />",sep="")
 
     radio <- cbind(radiol,radiog)
     nm.radio <- c("Lygis","Augimas")
@@ -680,7 +693,7 @@ todf <- function(x) {
 
 }
 
-doforecast <- function(x,sceno,years=2006:2011) {
+doforecast <- function(x,sceno,scenname,years=2006:2011) {
     require(tseries)
     require(nleqslv)
     require(plyr)
@@ -699,5 +712,17 @@ doforecast <- function(x,sceno,years=2006:2011) {
     tbreal1 <- produce.tb(flydt,mreal,years=years,gdpshare=as.character(mreal[1,2]))
     tbnom1 <- produce.tb(flydt,mnom,years=years,as.character(mnom[1,2]))
     
-    csvhtpair(tbreal1$growth,sceno);
+    tb2 <- produce.tb(flydt,mprice,years=2006:2011)
+    tb3 <- produce.tb(flydt,mwf,years=2006:2011)
+
+    tb1 <- list(real=tbreal1,nominal=tbnom1)
+    tb2 <- list(real=tb2)
+    tb3 <- list(real=tb3)
+
+    scen <- list(table=list(tb.conform(tb1),tb2,tb3))
+
+    tbnames <- c("BVP ir jo dalys","Kainos","Darbo rinkos rodikliai")
+
+    scen <- scen.2.xml(scen,sceno,scenname,tbnames)
+    write(scen,file=paste("scen",sceno,".xml",sep=""))
 }

@@ -45,9 +45,11 @@ tb3 <- list(real=tb3)
 
 scen <- list(table=list(tb.conform(tb1),tb2,tb3),form=list(data=dd,start=2009,pref="scen"))
 
-scen1 <- scen.2.xml(scen,1,"Scenarijus 1")
-scen2 <- scen.2.xml(scen,2,"Scenarijus 2")
-scen3 <- scen.2.xml(scen,3,"Scenarijus 3")
+tbnames <- c("BVP ir jo dalys","Kainos","Darbo rinkos rodikliai")
+
+scen1 <- scen.2.xml(scen,1,"Scenarijus 1",tbnames)
+scen2 <- scen.2.xml(scen,2,"Scenarijus 2",tbnames)
+scen3 <- scen.2.xml(scen,3,"Scenarijus 3",tbnames)
 
 xml <- "<lemasta>"
 xml <- paste(xml,scen1,sep="")
@@ -56,7 +58,7 @@ xml <- paste(xml,scen3,sep="")
 xml <- paste(xml,"</lemasta>",sep="")
 write(xml,file="output/initial.xml")
 
-save(ee,eqR,ladt,exo2y,q2y,mreal,mnom,mprice,mwf,file="output/lemasta.RData")
+save(ee,eqR,ladt,exo2y,q2y,mreal,mnom,mprice,mwf,tbnames,file="output/lemasta.RData")
 
 system("cp 10code.R output/code.R")
 
