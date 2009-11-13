@@ -1,0 +1,15 @@
+"Rodiklis";"Bound";2006;2007;2008;2009;2010;2011
+"Vidutinė paskolų palūkanų norma";"lower";0;0;0;2;2;2
+"Darbo jėga, darbo jėgos tyrimų duomenimis";"lower";0;0;0;1200;1000;800
+"Importo defliatorius";"lower";0;0;0;80;80;80
+"Nemineralinių medžiagų importo defliatorius";"lower";0;0;0;0,8;0,8;0,8
+"Eksporto defliatorius";"lower";0;0;0;80;80;80
+"Vokietijos importo defliatorius";"lower";0;0;0;0,8;0,8;0,8
+"Vokietijos bendras vidaus produktas";"lower";0;0;0;1800;1600;1400
+"Vidutinė paskolų palūkanų norma";"upper";0;0;0;20;20;20
+"Darbo jėga, darbo jėgos tyrimų duomenimis";"upper";0;0;0;2000;2200;2400
+"Importo defliatorius";"upper";0;0;0;150;150;150
+"Nemineralinių medžiagų importo defliatorius";"upper";0;0;0;1,5;1,5;1,5
+"Eksporto defliatorius";"upper";0;0;0;150;150;150
+"Vokietijos importo defliatorius";"upper";0;0;0;1,2;1,2;1,2
+"Vokietijos bendras vidaus produktas";"upper";0;0;0;2600;2800;3000
