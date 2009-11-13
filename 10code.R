@@ -521,7 +521,44 @@ tb.conform <- function(tb) {
     }
     tb   
 }
+rest.2.xml <- function(scen) {
+    xml <- "<rest>"
 
+    xml <- paste(xml,"<fbase>",sep="")
+    xml <- paste(xml,"<level>",sep="")
+    str <- capture.output(write.table(scen$rest$table$level,file="",row.names=FALSE,quote=FALSE,na="0",sep="\t"))
+    
+    str <- paste(str,collapse="\n")
+    xml <- paste(xml,str,sep="")
+    xml <- paste(xml,"</level>",sep="")
+
+    xml <- paste(xml,"<growth>",sep="")
+    str <- capture.output(write.table(scen$rest$table$level,file="",row.names=FALSE,quote=FALSE,na="0",sep="\t"))
+    
+    str <- paste(str,collapse="\n")
+    xml <- paste(xml,str,sep="")
+    xml <- paste(xml,"</growth>",sep="")
+
+    xml <- paste(xml,"</fbase>",sep="")
+
+    xml <- paste(xml,"<frest>")
+    xml <- paste(xml,"<upper>",sep="")
+    str <- capture.output(write.table(scen$rest$rest$upper,file="",row.names=FALSE,quote=FALSE,na="0",sep="\t"))
+    str <- paste(str,collapse="\n")
+    xml <- paste(xml,str,sep="")
+    xml <- paste(xml,"</upper>",sep="")
+
+    xml <- paste(xml,"<lower>",sep="")
+    str <- capture.output(write.table(scen$rest$rest$lower,file="",row.names=FALSE,quote=FALSE,na="0",sep="\t"))
+    str <- paste(str,collapse="\n")
+    xml <- paste(xml,str,sep="")
+    xml <- paste(xml,"</lower>",sep="")
+
+    
+    xml <- paste(xml,"</frest>")
+    xml <- paste(xml,"</rest>",sep="")
+    xml
+}
 scen.2.xml <- function(scen,no,name="Scenarijus",tbnames=NULL) {
     
     xml <- "<scenario>"
@@ -543,7 +580,7 @@ scen.2.xml <- function(scen,no,name="Scenarijus",tbnames=NULL) {
         }
 
     if(!is.null(scen$form)) {
-        frm <- produce.form(scen$form$data,start=scen$form$start,pref=paste(scen$form$pref,no,sep=""),string=TRUE)
+        frm <- produce.form(scen$form$data,start=scen$form$start,no,string=TRUE)
        
         xml <- paste(xml,"<form><![CDATA[",frm,"]]></form>",sep="")
     }
@@ -651,15 +688,19 @@ csvhtpair <- function(res,suffix,cssattr="varno",scenattr="scenno",catalogue="")
 
 }
 
-produce.form <- function(etb,start=2009,prefix="",string=TRUE) {
+produce.form <- function(etb,start=2009,scenno,string=TRUE,scen="scenno",var="varno",val="valno") {
 
     no <- dim(etb)[1]
-    nms <- paste(prefix,"egzo",1:no,"[]",sep="")
+    nms <- paste("scen",scenno,"egzo",1:no,"[]",sep="")
     years <- as.numeric(colnames(etb)[-2:-1])
 
     shy <- as.character(years[years<start])
     wry <- as.character(years[years>=start])
-    
+
+    cattr <- paste(scen,"='",scenno,"' ",
+                   var,"='",1:no,"' ",
+                   sep="")
+
     write.col.fun <- function(col,nm) {
         col <- prettyNum(round(col,2))
         vals <- paste("<input name='",nm,"' value=",col," type='text' size='5'/>",sep="")
@@ -671,15 +712,28 @@ produce.form <- function(etb,start=2009,prefix="",string=TRUE) {
         vals
     }
 
-    scols <- sapply(etb[,shy],show.col.fun,nm=nms)
-    wcols <- sapply(etb[,wry],write.col.fun,nm=nms)
+    
+    scols <- foreach(col=etb[,shy],.combine=cbind,valno=1:length(shy)) %do%
+    {
+        col <- prettyNum(round(col,2))
+        vals <- paste(col,"<input name='",nms,"' value=",col," type='hidden' ",cattr," ",val,"='",valno,"'/>",sep="")
+        vals
+    }
+
+    wcols <- foreach(col=etb[,wry],.combine=cbind,valno=1:length(wry)+length(shy)) %do%
+    {
+        col <- prettyNum(round(col,2))
+        idat <- paste("id='valinp",scenno,"-",1:no,"-",valno,"' ",sep="")
+        vals <- paste("<input name='",nms,"' value=",col," type='text' size='5' ",cattr,idat,val,"='",valno,"'/>",sep="")
+        vals
+    }
     
     first <- paste(etb[,1],"<input name='",nms,"' value='",etb[,1],"' type='hidden'/>",sep="")
     res <- data.frame(first,etb[,2],scols,wcols)
 
     names(res) <- c("Rodiklis",names(etb)[-1])
 
-    tbattr <- paste('border="1" ,cellpading="2", id="',prefix,'table"',sep="")
+    tbattr <- paste('border="1" ,cellpading="2", id="scentable',scenno,'"',sep="")
     
     if(string) {
         capture.output(str <- print(xtable(res),type="html",include.rows=FALSE,html.table.attributes=tbattr,sanitize.text.function=function(x)x))

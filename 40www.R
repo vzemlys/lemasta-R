@@ -3,16 +3,23 @@ source("30prepare.R")
 ################################################################
 ##Prepare exogenous variables (convert to yearly and back to quarterly)
 exo2y <- read.csv("tables/exo2y.csv")
+exo2yrest <- read.csv2("tables/exo2yrest.csv")
+colnames(exo2yrest)[-2:-1] <- 2006:2011
+
 q2y <- read.csv("tables/q2y.csv")
 
 lydt <- q2y.meta(ladt,q2y)
 
 exotb <-  produce.tb(lydt,exo2y)
+exotb$level[,5:7] <- round(exotb$level[,5:7],2)
+
 scy <- inverse.tb(exotb$level,exo2y)
 
 scq <- y2q.meta(scy,exo2y)
 
 ladt <- introduce.exo(scq,ladt,exo2y)
+
+
 
 ###############################################################
 ###Prepare initial tables for www
@@ -43,18 +50,27 @@ tb1 <- list(real=tbreal1,nominal=tbnom1)
 tb2 <- list(real=tb2)
 tb3 <- list(real=tb3)
 
-scen <- list(table=list(tb.conform(tb1),tb2,tb3),form=list(data=dd,start=2009,pref="scen"))
+exotb$level <- exotb$level[,-2]
+exotb$growth <- exotb$growth[,-2]
+
+rest <- list(table=exotb,rest=list(upper=exo2yrest[exo2yrest$Bound=="upper",-2],lower=exo2yrest[exo2yrest$Bound=="lower",-2]))
+  
+
+scen <- list(table=list(tb.conform(tb1),tb2,tb3),form=list(data=dd,start=2009,pref="scen"),rest=rest)
+
 
 tbnames <- c("BVP ir jo dalys","Kainos","Darbo rinkos rodikliai")
 
 scen1 <- scen.2.xml(scen,1,"Scenarijus 1",tbnames)
 scen2 <- scen.2.xml(scen,2,"Scenarijus 2",tbnames)
 scen3 <- scen.2.xml(scen,3,"Scenarijus 3",tbnames)
+rest <- rest.2.xml(scen)
 
 xml <- "<lemasta>"
 xml <- paste(xml,scen1,sep="")
 xml <- paste(xml,scen2,sep="")
 xml <- paste(xml,scen3,sep="")
+xml <- paste(xml,rest,sep="")
 xml <- paste(xml,"</lemasta>",sep="")
 write(xml,file="output/initial.xml")
 
