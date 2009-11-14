@@ -18,7 +18,9 @@ eqforecast <- function(start,end,eq,endoexo,data,leave=TRUE,use.jacobian=TRUE,..
     timem <- qpadd(start,end)
     indt <- ts(1:dim(data)[1],start=start(data),end=end(data),freq=4)
     res <- numeric()
+    
     for (i in 1:dim(timem)[1])     {
+
 
         it0 <- timem[i,]
        
@@ -29,8 +31,8 @@ eqforecast <- function(start,end,eq,endoexo,data,leave=TRUE,use.jacobian=TRUE,..
             parse(text=paste("bquote(",paste(deparse(l,width=500),collapse=""),")",sep=""))
         })
         
-        
-        eqmod <- lapply(eqit,function(l)eval(l,as.list(data)))
+        dl <- as.list(data)
+        eqmod <- lapply(eqit,function(l)eval(l,dl))
 
         eqq <- eqs.nleqslv(eqmod,subtb,use.jacobian=use.jacobian)
         
@@ -67,7 +69,7 @@ eqforecast <- function(start,end,eq,endoexo,data,leave=TRUE,use.jacobian=TRUE,..
 eqs.nleqslv <- function(eqmod,subtable,use.jacobian=TRUE) {
 
     eqoy <-lapply(eqmod,function(l)subvars(l,subtable))
-
+    
     if(use.jacobian) {
         eqog <- lapply(subtable[,1],function(l)lapply(eqmod,function(ll,nm=l)D(ll,name=nm)))
     
@@ -715,8 +717,8 @@ produce.form <- function(etb,start=2009,scenno,string=TRUE,scen="scenno",var="va
     
     scols <- foreach(col=etb[,shy],.combine=cbind,valno=1:length(shy)) %do%
     {
-        col <- prettyNum(round(col,2))
-        vals <- paste(col,"<input name='",nms,"' value=",col," type='hidden' ",cattr," ",val,"='",valno,"'/>",sep="")
+        rcol <- prettyNum(round(col,2))
+        vals <- paste(rcol,"<input name='",nms,"' value=",col," type='hidden' ",cattr," ",val,"='",valno,"'/>",sep="")
         vals
     }
 
@@ -755,10 +757,14 @@ doforecast <- function(x,sceno,scenname,years=2006:2011) {
     require(foreach)
 
     colnames(x) <- c("Rodiklis",years)
-    
+
+    print(x)
     scy <- inverse.tb(x,exo2y)
+    print(scy)
     scq <- y2q.meta(scy,exo2y)
+    print(scq)
     dd <- introduce.exo(scq,ladt,exo2y)
+    print(dd[,colnames(scq)])
     
     ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=dd,leave=TRUE,use.jacobian=TRUE,control=list(ftol=1e-3))
 

@@ -11,7 +11,8 @@ q2y <- read.csv("tables/q2y.csv")
 lydt <- q2y.meta(ladt,q2y)
 
 exotb <-  produce.tb(lydt,exo2y)
-exotb$level[,5:7] <- round(exotb$level[,5:7],2)
+
+exotb$level[,6:8] <- round(exotb$level[,6:8],2)
 
 scy <- inverse.tb(exotb$level,exo2y)
 
@@ -25,7 +26,10 @@ ladt <- introduce.exo(scq,ladt,exo2y)
 ###Prepare initial tables for www
 
 ##Do forecast
-system.time(ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=ladt,leave=TRUE,use.jacobian=TRUE))
+Rprof()
+ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=ladt,leave=TRUE,use.jacobian=TRUE,control=list(ftol=1e-3))
+Rprof(NULL)
+
 
 flydt <- q2y.meta(ftry$data,q2y)
 

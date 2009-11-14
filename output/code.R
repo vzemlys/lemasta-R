@@ -715,8 +715,8 @@ produce.form <- function(etb,start=2009,scenno,string=TRUE,scen="scenno",var="va
     
     scols <- foreach(col=etb[,shy],.combine=cbind,valno=1:length(shy)) %do%
     {
-        col <- prettyNum(round(col,2))
-        vals <- paste(col,"<input name='",nms,"' value=",col," type='hidden' ",cattr," ",val,"='",valno,"'/>",sep="")
+        rcol <- prettyNum(round(col,2))
+        vals <- paste(rcol,"<input name='",nms,"' value=",col," type='hidden' ",cattr," ",val,"='",valno,"'/>",sep="")
         vals
     }
 
@@ -755,10 +755,14 @@ doforecast <- function(x,sceno,scenname,years=2006:2011) {
     require(foreach)
 
     colnames(x) <- c("Rodiklis",years)
-    
+
+    print(x)
     scy <- inverse.tb(x,exo2y)
+    print(scy)
     scq <- y2q.meta(scy,exo2y)
+    print(scq)
     dd <- introduce.exo(scq,ladt,exo2y)
+    print(dd[,colnames(scq)])
     
     ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=dd,leave=TRUE,use.jacobian=TRUE,control=list(ftol=1e-3))
 
