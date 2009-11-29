@@ -18,7 +18,9 @@ eqforecast <- function(start,end,eq,endoexo,data,leave=TRUE,use.jacobian=TRUE,..
     timem <- qpadd(start,end)
     indt <- ts(1:dim(data)[1],start=start(data),end=end(data),freq=4)
     res <- numeric()
+    
     for (i in 1:dim(timem)[1])     {
+
 
         it0 <- timem[i,]
        
@@ -29,8 +31,8 @@ eqforecast <- function(start,end,eq,endoexo,data,leave=TRUE,use.jacobian=TRUE,..
             parse(text=paste("bquote(",paste(deparse(l,width=500),collapse=""),")",sep=""))
         })
         
-        
-        eqmod <- lapply(eqit,function(l)eval(l,as.list(data)))
+        dl <- as.list(data)
+        eqmod <- lapply(eqit,function(l)eval(l,dl))
 
         eqq <- eqs.nleqslv(eqmod,subtb,use.jacobian=use.jacobian)
         
@@ -67,7 +69,7 @@ eqforecast <- function(start,end,eq,endoexo,data,leave=TRUE,use.jacobian=TRUE,..
 eqs.nleqslv <- function(eqmod,subtable,use.jacobian=TRUE) {
 
     eqoy <-lapply(eqmod,function(l)subvars(l,subtable))
-
+    
     if(use.jacobian) {
         eqog <- lapply(subtable[,1],function(l)lapply(eqmod,function(ll,nm=l)D(ll,name=nm)))
     
@@ -79,6 +81,90 @@ eqs.nleqslv <- function(eqmod,subtable,use.jacobian=TRUE) {
     
     list(fn=eqoy,grad=eqogy)
 }
+
+eq.prepare <- function(start,end,eq,endoexo,data) {
+    exonames <- as.character(endoexo$name[endoexo$exo=="Exog"])
+
+    noendog <- table(endoexo$exo)["Endog"]
+    subtb <- cbind(as.character(endoexo$name[endoexo$exo=="Endog"]),paste("y[",1:noendog,"]",sep=""))
+
+    timem <- qpadd(start,end)
+    indt <- ts(1:dim(data)[1],start=start(data),end=end(data),freq=4)
+    res <- list()
+    
+    for (i in 1:dim(timem)[1])     {
+
+
+        it0 <- timem[i,]
+     
+        eqit <- lapply(eq,function(l)edlagv(l,start=it0,end=it0,exonames=exonames))
+
+        eqit <- lapply(eqit,subvarsnum,tb=subtb)
+        
+        eqq <- sapply(eqit,function(l)paste(deparse(l,width=500),collapse=""))
+        eqq <- paste("bquote(c(",paste(eqq,collapse=","),"))",sep="")
+        eqit <- parse(text=eqq)
+        res <- c(res,list(eqit))
+    }
+
+    list(timem=timem,indt=indt,subtb=subtb,eqit=res)
+}
+
+eqprof <- function(start,end,eq,endoexo,data,leave=TRUE,use.jacobian=TRUE,prep=NULL,...) {
+    exonames <- as.character(endoexo$name[endoexo$exo=="Exog"])
+
+    noendog <- table(endoexo$exo)["Endog"]
+    subtb <- cbind(as.character(endoexo$name[endoexo$exo=="Endog"]),paste("y[",1:noendog,"]",sep=""))
+    
+   
+    mod.fn <- function(x) {
+        eval(eqmod,list(y=x))
+    }
+
+    timem <- qpadd(start,end)
+    indt <- ts(1:dim(data)[1],start=start(data),end=end(data),freq=4)
+    res <- numeric()
+
+    for (i in 1:dim(timem)[1])     {
+
+
+        it0 <- timem[i,]
+       
+       
+        eqit <- prep$eqit[[i]]
+        dl <- as.list(data)
+
+        eqmod <- eval(eqit,dl)
+
+        x0 <- as.numeric(window(lag(data[,subtb[,1]],-1),start=it0,end=it0))
+
+
+        if(use.jacobian)    
+          fogs <- nleqslv(x0,mod.fn,jac=mod.jac,...)
+        else
+          fogs <- nleqslv(x0,mod.fn,...)
+     
+        ind <- as.numeric(window(indt,start=it0,end=it0))
+        ###If some values were not NA, leave them intact
+      
+        fc <- fogs$x
+        if(leave) {
+            cd <- data[ind,subtb[,1]]
+            if(sum(!is.na(cd))>0) {
+                fc[!is.na(cd)] <- cd[!is.na(cd)]
+            }
+        }
+        data[ind,subtb[,1]] <- fc
+        res <- rbind(res,fc)
+
+    }
+    res <- ts(res,start=start,end=end,frequency=4)
+    colnames(res) <- subtb[,1]
+    list(res=res,data=data)
+}
+
+
+
 
 eviewstoR <-function(str,varnames) {
     varnames <- tolower(varnames)
@@ -267,7 +353,38 @@ subvars <- function(expr,tb,make.exp=FALSE) {
     return(expr)
 }
 
-
+subvarsnum <- function(expr,tb,make.exp=FALSE) {
+#    browser()
+    if(length(expr)==1) {
+        nm <- deparse(expr)
+        if(nm %in% tb[,1]) {
+            if(make.exp) {
+                ie <- tb[tb[,1]==nm,2]
+                e <- paste("exp(",ie,")",sep="")
+            }
+            else {
+                e <- tb[tb[,1]==nm,2]
+            }
+            return(parse(text=e)[[1]])
+        }
+        else
+          return(expr)
+    }
+    else {
+        if(length(expr)==2) {
+            txt <- deparse(expr[[1]])
+         #   browser()
+            if(txt==".") return(expr)
+        }
+        for (i in 2:length(expr)) {
+               expr[[i]] <- subvarsnum(expr[[i]],tb,make.exp)
+        }
+       
+          
+    }
+        
+    return(expr)
+}
 
 edlagv <- function(expr,start,end,exonames) {
     if(length(expr)==1) {
@@ -764,8 +881,9 @@ doforecast <- function(x,sceno,scenname,years=2006:2011) {
     dd <- introduce.exo(scq,ladt,exo2y)
     print(dd[,colnames(scq)])
     
-    ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=dd,leave=TRUE,use.jacobian=TRUE,control=list(ftol=1e-3))
-
+  #  ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=dd,leave=TRUE,use.jacobian=TRUE,control=list(ftol=1e-3))
+    ftry <- eqprof(start=c(2009,1),end=c(2011,4),eqR,ee,data=ladt,leave=TRUE,use.jacobian=FALSE,control=list(ftol=1e-3),prep=fp.prep)
+    
     flydt <- q2y.meta(ftry$data,q2y)
     tbreal1 <- produce.tb(flydt,mreal,years=years,gdpshare=as.character(mreal[1,2]))
     tbnom1 <- produce.tb(flydt,mnom,years=years,as.character(mnom[1,2]))

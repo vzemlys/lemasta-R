@@ -30,6 +30,12 @@ Rprof()
 ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=ladt,leave=TRUE,use.jacobian=TRUE,control=list(ftol=1e-3))
 Rprof(NULL)
 
+fp.prep <- eq.prepare(start=c(2009,1),end=c(2011,4),eqR,ee,data=ladt)
+
+Rprof()
+fp <- eqprof(start=c(2009,1),end=c(2011,4),eqR,ee,data=ladt,leave=TRUE,use.jacobian=FALSE,control=list(ftol=1e-3),prep=fp.prep)
+Rprof(NULL)
+
 
 flydt <- q2y.meta(ftry$data,q2y)
 
@@ -78,7 +84,7 @@ xml <- paste(xml,rest,sep="")
 xml <- paste(xml,"</lemasta>",sep="")
 write(xml,file="output/initial.xml")
 
-save(ee,eqR,ladt,exo2y,q2y,mreal,mnom,mprice,mwf,tbnames,file="output/lemasta.RData")
+save(ee,eqR,ladt,exo2y,q2y,mreal,mnom,mprice,mwf,tbnames,fp.prep,file="output/lemasta.RData")
 
 system("cp 10code.R output/code.R")
 
