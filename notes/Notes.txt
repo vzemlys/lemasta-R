@@ -2,3 +2,5 @@ Failas LEMAMmod.xls yra padarytas iš LEMAM.xls. Lietuviški lapų pavadinimai
 pakeisti csv failuose į angliškus. Atitinkamai all_data.xls ir data_sa.xls yra
 duomenys naudoti modelyje. All_data yra ir su sezonu ir be. Data_sa jau be
 sezono.
+
+Duomenys ir eviews failas ateina iš Dimos meilo.
