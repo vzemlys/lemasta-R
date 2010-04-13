@@ -14,25 +14,24 @@ source("10code.R")
 #################################################################
 #Read data
 
-lad <- read.csv("data/lemam_data.csv")
+lad <- read.csv("data/VK0412_data.csv")
 ladt <- ts(lad[,-1],start=c(1995,1),freq=4)
 colnames(ladt)  <- tolower(colnames(ladt))
-
-###Paskutinis stulpelis kartojasi du kartus, ismetu ji.
-ladt <- ladt[,-ncol(ladt)]
 
 
 
 ################################################################
 ###Convert eviews formulas to R
-eqstr <- read.eviews("eviews/LEMAM0922.txt")
+eqstr <- read.eviews("eviews/lygtys_01q1-09q4.txt")
+
 eqstrm <- sub("(=)(.*)","-(\\2)",eqstr)
-eqR <- lapply(eqstrm,function(l)eviewstoR(l,varnames=colnames(ladt)))
+
+eqR <- lapply(eqstrm,function(l){print(l);eviewstoR(l,varnames=colnames(ladt))})
 
 ################################################################
 ##Insert exogenous forecasts
 
-exof <- read.csv("data/scenarioDC.csv")
+exof <- read.csv("data/VK0412_scen.csv")
 exof <- ts(exof[,-1],start=c(1995,1),freq=4)
 colnames(exof)  <- tolower(colnames(exof))
 
@@ -47,8 +46,12 @@ for(nm in colnames(exof)) {
     window(ladt[,nm],start=c(2009,2)) <- window(exof[,nm],start=c(2009,2))
 }
 
+##Last three of exof can be endogenous
+ene <- c("x_r_sa"   ,   "bp_im_sa" ,   "g_n_sa" )
+
 ee <- rbind(data.frame(name=colnames(exof),exo="Exog"),
             data.frame(name=setdiff(colnames(ladt),colnames(exof)),exo="Endog")
             )
 
+ee$exo[ee$name%in% ene] <- "Endog"
 

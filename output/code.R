@@ -294,6 +294,7 @@ edlogv <- function(expr,varnames) {
         }
     }
     if(length(expr)>=3) {
+      
         if(expr[[1]]==as.name("d")) {
                 ie <- deparse(edlogv(expr[[2]],varnames))
                 nol <- deparse(expr[[4]])
@@ -303,6 +304,7 @@ edlogv <- function(expr,varnames) {
         else {
             if(expr[[1]]==as.name("dlog")) {
                 ie <- deparse(edlogv(expr[[2]],varnames))
+                print(expr)
                 nol <- deparse(expr[[4]])
                 e <- paste("log(",ie,")-lag(log(",ie,"),-",nol,")",sep="")
                 nn <- as.numeric(deparse(expr[[3]]))
@@ -950,7 +952,7 @@ doforecast <- function(exo,ea,model,sceno,scenname,years=2006:2011) {
     print(exotable)
   #  ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=dd,leave=TRUE,use.jacobian=TRUE,control=list(ftol=1e-3))
 
-    ftry <- eqprof(start=c(2009,1),end=c(2011,4),eqlist,exotable,data=dd,leave=TRUE,use.jacobian=FALSE,control=list(ftol=1e-3),prep=prep)
+    ftry <- eqprof(start=c(2009,1),end=c(2011,4),eqlist,exotable,data=dd,leave=FALSE,use.jacobian=FALSE,control=list(ftol=1e-3),prep=prep)
     
     flydt <- q2y.meta(ftry$data,q2y)
     tbreal1 <- produce.tb(flydt,mreal,years=years,gdpshare=as.character(mreal[1,2]))

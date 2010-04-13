@@ -24,7 +24,7 @@ ladt <- introduce.exo(scq,ladt,exo2y)
 ##Prepare additional exogenous tables
 exoadd2y <- read.csv("tables/exoadd2y.csv")
 exoatb <- produce.tb(lydt,exoadd2y)
-
+exoameta <- read.csv("tables/eqtoremove.csv")
 
 
 ###############################################################
@@ -92,7 +92,7 @@ xml <- paste(xml,exoadd,sep="")
 xml <- paste(xml,"</lemasta>",sep="")
 write(xml,file="output/initial.xml")
 
-save(ee,eqR,ladt,exo2y,q2y,exoadd2y,mreal,mnom,mprice,mwf,tbnames,fp.prep,file="output/lemasta.RData")
+save(ee,eqR,ladt,exo2y,q2y,exoadd2y,exoameta,mreal,mnom,mprice,mwf,tbnames,fp.prep,file="output/lemasta.RData")
 
 system("cp 10code.R output/code.R")
 
