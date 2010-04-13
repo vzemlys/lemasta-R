@@ -20,6 +20,11 @@ scq <- y2q.meta(scy,exo2y)
 
 ladt <- introduce.exo(scq,ladt,exo2y)
 
+######################################################
+##Prepare additional exogenous tables
+exoadd2y <- read.csv("tables/exoadd2y.csv")
+exoatb <- produce.tb(lydt,exoadd2y)
+
 
 
 ###############################################################
@@ -65,8 +70,9 @@ exotb$growth <- exotb$growth[,-2]
 
 rest <- list(table=exotb,rest=list(upper=exo2yrest[exo2yrest$Bound=="upper",-2],lower=exo2yrest[exo2yrest$Bound=="lower",-2]))
   
+exoadd <- list(table=exoatb)
 
-scen <- list(table=list(tb.conform(tb1),tb2,tb3),form=list(data=dd,start=2009,pref="scen"),rest=rest)
+scen <- list(table=list(tb.conform(tb1),tb2,tb3),form=list(data=dd,start=2009,pref="scen"),rest=rest,exoadd=exoadd)
 
 
 tbnames <- c("BVP ir jo dalys","Kainos","Darbo rinkos rodikliai")
@@ -75,16 +81,18 @@ scen1 <- scen.2.xml(scen,1,"Scenarijus 1",tbnames)
 scen2 <- scen.2.xml(scen,2,"Scenarijus 2",tbnames)
 scen3 <- scen.2.xml(scen,3,"Scenarijus 3",tbnames)
 rest <- rest.2.xml(scen)
+exoadd <- exoadd.2.xml(scen)
 
 xml <- "<lemasta>"
 xml <- paste(xml,scen1,sep="")
 xml <- paste(xml,scen2,sep="")
 xml <- paste(xml,scen3,sep="")
 xml <- paste(xml,rest,sep="")
+xml <- paste(xml,exoadd,sep="")
 xml <- paste(xml,"</lemasta>",sep="")
 write(xml,file="output/initial.xml")
 
-save(ee,eqR,ladt,exo2y,q2y,mreal,mnom,mprice,mwf,tbnames,fp.prep,file="output/lemasta.RData")
+save(ee,eqR,ladt,exo2y,q2y,exoadd2y,mreal,mnom,mprice,mwf,tbnames,fp.prep,file="output/lemasta.RData")
 
 system("cp 10code.R output/code.R")
 

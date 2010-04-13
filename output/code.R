@@ -509,7 +509,10 @@ y2q <- function(data,fun.expand) {
         res <- matrix(res,ncol=1)
         colnames(res) <- colnames(data)
     }
-    ts(res,start=c(start(data),1),frequency=4)
+    if(ncol(data)>0) {
+        ts(res,start=c(start(data),1),frequency=4)
+    }
+    else data
 }
 
 y2q.stream <- function(data) {
@@ -523,10 +526,14 @@ y2q.index <- function(data) {
 y2q.meta <- function(data,meta) {
     
     y2s <- y2q.stream(data[,as.character(meta$Name[meta$Type=="stream"]),drop=FALSE])
+  
     y2i <- y2q.index(data[,as.character(meta$Name[meta$Type=="index"]),drop=FALSE])
 
-    lydt <- cbind(y2s,y2i)
+    if(ncol(y2s)>0) lydt <- y2s
+    if(ncol(y2i)>0) lydt <- cbind(lydt,y2i)
+   
     colnames(lydt) <- c(colnames(y2s),colnames(y2i))
+   
     lydt
 }
 
@@ -543,10 +550,10 @@ introduce.exo <- function(x,data,meta,start=c(2009,2)) {
           st <- ss
         else
           st <- si
-        
+
         window(data[,nm],start=st,end=ee) <- window(l,start=st,end=ee)
         fillna <- na.approx(data[,nm])
-        window(data[,nm],start=start(fillna)) <- fillna
+        window(data[,nm],start=start(fillna),end=end(fillna)) <- fillna
        
     }
     data
@@ -676,6 +683,49 @@ rest.2.xml <- function(scen) {
     xml <- paste(xml,"</rest>",sep="")
     xml
 }
+
+exoadd.2.xml <- function(scen) {
+    xml <- "<exoadd>"
+
+    xml <- paste(xml,"<fbase>",sep="")
+    xml <- paste(xml,"<level>",sep="")
+    str <- capture.output(write.table(scen$exoadd$table$level,file="",row.names=FALSE,quote=FALSE,na="0",sep="\t"))
+    
+    str <- paste(str,collapse="\n")
+    xml <- paste(xml,str,sep="")
+    xml <- paste(xml,"</level>",sep="")
+
+    xml <- paste(xml,"<growth>",sep="")
+    str <- capture.output(write.table(scen$exoadd$table$level,file="",row.names=FALSE,quote=FALSE,na="0",sep="\t"))
+    
+    str <- paste(str,collapse="\n")
+    xml <- paste(xml,str,sep="")
+    xml <- paste(xml,"</growth>",sep="")
+
+    xml <- paste(xml,"</fbase>",sep="")
+
+    if(!is.null(scen$exo$add$rest)) {
+        xml <- paste(xml,"<frest>")
+        xml <- paste(xml,"<upper>",sep="")
+        str <- capture.output(write.table(scen$exoadd$rest$upper,file="",row.names=FALSE,quote=FALSE,na="0",sep="\t"))
+        str <- paste(str,collapse="\n")
+        xml <- paste(xml,str,sep="")
+        xml <- paste(xml,"</upper>",sep="")
+        
+        xml <- paste(xml,"<lower>",sep="")
+        str <- capture.output(write.table(scen$exoadd$rest$lower,file="",row.names=FALSE,quote=FALSE,na="0",sep="\t"))
+        str <- paste(str,collapse="\n")
+        xml <- paste(xml,str,sep="")
+        xml <- paste(xml,"</lower>",sep="")
+        
+        
+        xml <- paste(xml,"</frest>")
+    }
+    xml <- paste(xml,"</exoadd>",sep="")
+    xml
+}
+
+
 scen.2.xml <- function(scen,no,name="Scenarijus",tbnames=NULL) {
     
     xml <- "<scenario>"
@@ -805,17 +855,17 @@ csvhtpair <- function(res,suffix,cssattr="varno",scenattr="scenno",catalogue="")
 
 }
 
-produce.form <- function(etb,start=2009,scenno,string=TRUE,scen="scenno",var="varno",val="valno") {
+produce.form <- function(etb,start=2009,scenno,string=TRUE,scen="scenno",var="varno",val="valno",tableid="scentable",egzo="egzo",idstart=0) {
 
     no <- dim(etb)[1]
-    nms <- paste("scen",scenno,"egzo",1:no,"[]",sep="")
+    nms <- paste("scen",scenno,egzo,1:no+idstart,"[]",sep="")
     years <- as.numeric(colnames(etb)[-2:-1])
 
     shy <- as.character(years[years<start])
     wry <- as.character(years[years>=start])
 
     cattr <- paste(scen,"='",scenno,"' ",
-                   var,"='",1:no,"' ",
+                   var,"='",1:no+idstart,"' ",
                    sep="")
 
     write.col.fun <- function(col,nm) {
@@ -840,7 +890,7 @@ produce.form <- function(etb,start=2009,scenno,string=TRUE,scen="scenno",var="va
     wcols <- foreach(col=etb[,wry],.combine=cbind,valno=1:length(wry)+length(shy)) %do%
     {
         col <- prettyNum(round(col,2))
-        idat <- paste("id='valinp",scenno,"-",1:no,"-",valno,"' ",sep="")
+        idat <- paste("id='valinp",scenno,"-",1:no+idstart,"-",valno,"' ",sep="")
         vals <- paste("<input name='",nms,"' value=",col," type='text' size='5' ",cattr,idat,val,"='",valno,"'/>",sep="")
         vals
     }
@@ -850,7 +900,7 @@ produce.form <- function(etb,start=2009,scenno,string=TRUE,scen="scenno",var="va
 
     names(res) <- c("Rodiklis",names(etb)[-1])
 
-    tbattr <- paste('border="1" ,cellpading="2", id="scentable',scenno,'"',sep="")
+    tbattr <- paste('border="1" ,cellpading="2", id="',tableid,scenno,'"',sep="")
     
     if(string) {
         capture.output(str <- print(xtable(res),type="html",include.rows=FALSE,html.table.attributes=tbattr,sanitize.text.function=function(x)x))
@@ -864,25 +914,43 @@ todf <- function(x) {
 
 }
 
-doforecast <- function(x,sceno,scenname,years=2006:2011) {
+doforecast <- function(exo,ea,model,sceno,scenname,years=2006:2011) {
     require(tseries)
     require(nleqslv)
     require(plyr)
     require(reshape)
     require(foreach)
 
-    colnames(x) <- c("Rodiklis",years)
+    colnames(exo) <- c("Rodiklis",years)
 
-    print(x)
-    scy <- inverse.tb(x,exo2y)
+    print(exo)
+    scy <- inverse.tb(exo,exo2y)
     print(scy)
     scq <- y2q.meta(scy,exo2y)
     print(scq)
     dd <- introduce.exo(scq,ladt,exo2y)
     print(dd[,colnames(scq)])
-    
+
+    print(ea)
+    if(!is.null(ea)) {
+        colnames(ea) <- c("Rodiklis",years)
+        eainfo <- exoadd(ea,ee,eqR)
+        eqlist <- eainfo$eqlist
+        exotable <- eainfo$exotable
+        dd <- eainfo$data
+        print(length(eqlist))
+        print(length(eqR))
+        prep <- eq.prepare(start=c(2009,1),end=c(2011,4),eqlist,exotable,data=ladt)
+    }
+    else {
+        eqlist <- eqR
+        exotable <- ee
+        prep=fp.prep
+    }
+    print(exotable)
   #  ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=dd,leave=TRUE,use.jacobian=TRUE,control=list(ftol=1e-3))
-    ftry <- eqprof(start=c(2009,1),end=c(2011,4),eqR,ee,data=ladt,leave=TRUE,use.jacobian=FALSE,control=list(ftol=1e-3),prep=fp.prep)
+
+    ftry <- eqprof(start=c(2009,1),end=c(2011,4),eqlist,exotable,data=dd,leave=TRUE,use.jacobian=FALSE,control=list(ftol=1e-3),prep=prep)
     
     flydt <- q2y.meta(ftry$data,q2y)
     tbreal1 <- produce.tb(flydt,mreal,years=years,gdpshare=as.character(mreal[1,2]))
@@ -901,4 +969,18 @@ doforecast <- function(x,sceno,scenname,years=2006:2011) {
 
     scen <- scen.2.xml(scen,sceno,scenname,tbnames)
     write(scen,file=paste("scen",sceno,".xml",sep=""))
+}
+
+exoadd <- function(ea,exotable,eqlist) {
+    scy <- inverse.tb(ea,exoadd2y)
+    scq <- y2q.meta(scy,exoadd2y)
+    dd <- introduce.exo(scq,ladt,exoadd2y)
+
+    ###Find out which additional variables should become exogenous
+
+    varn <- exoameta$Zymejimas[exoameta$Rodiklis %in% ea$Rodiklis]
+    eqno <- exoameta$Eqno[exoameta$Rodiklis %in% ea$Rodiklis]
+    exotable[exotable$name%in% varn,"exo"] <- "Exog"
+    eqlist[eqno] <- NULL
+    list(exotable=exotable,eqlist=eqlist,data=dd)
 }

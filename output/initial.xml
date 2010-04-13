@@ -1,5 +1,5 @@
-<lemasta><scenario><number>1</number><name>Scenarijus 1</name><table><tbno>1</tbno><tbname>BVP ir jo dalys</tbname><data><![CDATA[<!-- html table generated in R 2.9.2 by xtable 1.5-5 package -->
-<!-- Sun Nov 29 16:13:14 2009 -->
+<lemasta><scenario><number>1</number><name>Scenarijus 1</name><table><tbno>1</tbno><tbname>BVP ir jo dalys</tbname><data><![CDATA[<!-- html table generated in R 2.10.1 by xtable 1.5-6 package -->
+<!-- Tue Apr 13 10:44:56 2010 -->
 <TABLE border="1" ,cellpading="2", id="table1-1">
 <TR> <TH>  </TH> <TH> Rodiklis </TH> <TH> Vienetai </TH> <TH> 2006 </TH> <TH> 2007 </TH> <TH> 2008 </TH> <TH> 2009 </TH> <TH> 2010 </TH> <TH> 2011 </TH> <TH> Lygis </TH> <TH> Augimas </TH> <TH> BVP dalis </TH> <TH> Realios </TH> <TH> Veikusios </TH> <TH>  </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Bendrasis vidaus produktas (BVP) </TD> <TD> mln. Lt </TD> <TD align="right"> 7.89 </TD> <TD align="right"> 8.91 </TD> <TD align="right"> 3.21 </TD> <TD align="right"> -9.47 </TD> <TD align="right"> 3.48 </TD> <TD align="right"> 3.52 </TD> <TD> <input type='radio' name='lgs1type0' varno='0' tbvarno='1' scenno='1' tbno='1' value='level' /> </TD> <TD> <input type='radio' name='lgs1type0' varno='0' tbvarno='1' scenno='1' tbno='1' value='growth' checked /> </TD> <TD> <input type='radio' name='lgs1type0' varno='0' tbvarno='1' scenno='1' tbno='1'  value='gdpshare' /> </TD> <TD> <input type='radio' name='rn1type0' varno='0' tbvarno='1' scenno='1' tbno='1' value='real'  checked/> </TD> <TD> <input type='radio' name='rn1type0' varno='0' tbvarno='1' scenno='1' tbno='1' value='nominal' /> </TD> <TD> <input type='submit' value='Lyginti' varno='0' tbvarno='1' scenno='1' tbno='1' /> </TD> </TR>
@@ -9,8 +9,8 @@
   <TR> <TD align="right"> 5 </TD> <TD> Kompensacija darbuotojams </TD> <TD> mln. Lt </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD> <input type='radio' name='lgs1type4' varno='4' tbvarno='5' scenno='1' tbno='1' value='level' /> </TD> <TD> <input type='radio' name='lgs1type4' varno='4' tbvarno='5' scenno='1' tbno='1' value='growth' checked /> </TD> <TD> <input type='radio' name='lgs1type4' varno='4' tbvarno='5' scenno='1' tbno='1'  value='gdpshare' /> </TD> <TD> <input type='radio' name='rn1type4' varno='4' tbvarno='5' scenno='1' tbno='1' value='real'  checked/> </TD> <TD> <input type='radio' name='rn1type4' varno='4' tbvarno='5' scenno='1' tbno='1' value='nominal' /> </TD> <TD> <input type='submit' value='Lyginti' varno='4' tbvarno='5' scenno='1' tbno='1' /> </TD> </TR>
   <TR> <TD align="right"> 6 </TD> <TD> Likutinis perteklius ir mišriosios pajamos </TD> <TD> mln. Lt </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD> <input type='radio' name='lgs1type5' varno='5' tbvarno='6' scenno='1' tbno='1' value='level' /> </TD> <TD> <input type='radio' name='lgs1type5' varno='5' tbvarno='6' scenno='1' tbno='1' value='growth' checked /> </TD> <TD> <input type='radio' name='lgs1type5' varno='5' tbvarno='6' scenno='1' tbno='1'  value='gdpshare' /> </TD> <TD> <input type='radio' name='rn1type5' varno='5' tbvarno='6' scenno='1' tbno='1' value='real'  checked/> </TD> <TD> <input type='radio' name='rn1type5' varno='5' tbvarno='6' scenno='1' tbno='1' value='nominal' /> </TD> <TD> <input type='submit' value='Lyginti' varno='5' tbvarno='6' scenno='1' tbno='1' /> </TD> </TR>
    </TABLE>
-]]></data></table><table><tbno>2</tbno><tbname>Kainos</tbname><data><![CDATA[<!-- html table generated in R 2.9.2 by xtable 1.5-5 package -->
-<!-- Sun Nov 29 16:13:14 2009 -->
+]]></data></table><table><tbno>2</tbno><tbname>Kainos</tbname><data><![CDATA[<!-- html table generated in R 2.10.1 by xtable 1.5-6 package -->
+<!-- Tue Apr 13 10:44:56 2010 -->
 <TABLE border="1" ,cellpading="2", id="table2-1">
 <TR> <TH>  </TH> <TH> Rodiklis </TH> <TH> Vienetai </TH> <TH> 2006 </TH> <TH> 2007 </TH> <TH> 2008 </TH> <TH> 2009 </TH> <TH> 2010 </TH> <TH> 2011 </TH> <TH> Lygis </TH> <TH> Augimas </TH> <TH>  </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> BVP defliatorius </TD> <TD> indeksas </TD> <TD align="right"> 6.66 </TD> <TD align="right"> 9.36 </TD> <TD align="right"> 6.96 </TD> <TD align="right"> -1.71 </TD> <TD align="right"> -4.63 </TD> <TD align="right"> -3.29 </TD> <TD> <input type='radio' name='lgs1type6' varno='6' tbvarno='1' scenno='1' tbno='2' value='level' /> </TD> <TD> <input type='radio' name='lgs1type6' varno='6' tbvarno='1' scenno='1' tbno='2' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='6' tbvarno='1' scenno='1' tbno='2' /> </TD> </TR>
@@ -18,8 +18,8 @@
   <TR> <TD align="right"> 3 </TD> <TD> Gamintojų kainų indeksas </TD> <TD> indeksas </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 16.98 </TD> <TD align="right"> 4.80 </TD> <TD align="right"> -13.13 </TD> <TD align="right"> -1.21 </TD> <TD align="right"> -1.87 </TD> <TD> <input type='radio' name='lgs1type8' varno='8' tbvarno='3' scenno='1' tbno='2' value='level' /> </TD> <TD> <input type='radio' name='lgs1type8' varno='8' tbvarno='3' scenno='1' tbno='2' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='8' tbvarno='3' scenno='1' tbno='2' /> </TD> </TR>
   <TR> <TD align="right"> 4 </TD> <TD> Vidutinis mėnesinis bruto darbo užmokestis </TD> <TD> Lt </TD> <TD align="right"> 19.27 </TD> <TD align="right"> 18.73 </TD> <TD align="right"> 13.14 </TD> <TD align="right"> -6.84 </TD> <TD align="right"> -1.78 </TD> <TD align="right"> -2.40 </TD> <TD> <input type='radio' name='lgs1type9' varno='9' tbvarno='4' scenno='1' tbno='2' value='level' /> </TD> <TD> <input type='radio' name='lgs1type9' varno='9' tbvarno='4' scenno='1' tbno='2' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='9' tbvarno='4' scenno='1' tbno='2' /> </TD> </TR>
    </TABLE>
-]]></data></table><table><tbno>3</tbno><tbname>Darbo rinkos rodikliai</tbname><data><![CDATA[<!-- html table generated in R 2.9.2 by xtable 1.5-5 package -->
-<!-- Sun Nov 29 16:13:14 2009 -->
+]]></data></table><table><tbno>3</tbno><tbname>Darbo rinkos rodikliai</tbname><data><![CDATA[<!-- html table generated in R 2.10.1 by xtable 1.5-6 package -->
+<!-- Tue Apr 13 10:44:56 2010 -->
 <TABLE border="1" ,cellpading="2", id="table3-1">
 <TR> <TH>  </TH> <TH> Rodiklis </TH> <TH> Vienetai </TH> <TH> 2006 </TH> <TH> 2007 </TH> <TH> 2008 </TH> <TH> 2009 </TH> <TH> 2010 </TH> <TH> 2011 </TH> <TH> Lygis </TH> <TH> Augimas </TH> <TH>  </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Darbo jėga, darbo jėgos tyrimų duomenimis </TD> <TD> tūkst. žm </TD> <TD align="right"> -1.52 </TD> <TD align="right"> 1.11 </TD> <TD align="right"> 2.87 </TD> <TD align="right"> -2.26 </TD> <TD align="right"> -0.26 </TD> <TD align="right"> -0.04 </TD> <TD> <input type='radio' name='lgs1type10' varno='10' tbvarno='1' scenno='1' tbno='3' value='level' /> </TD> <TD> <input type='radio' name='lgs1type10' varno='10' tbvarno='1' scenno='1' tbno='3' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='10' tbvarno='1' scenno='1' tbno='3' /> </TD> </TR>
@@ -27,8 +27,8 @@
   <TR> <TD align="right"> 3 </TD> <TD> Sąlyginis darbuotojų skaičius </TD> <TD> tūkst. žm </TD> <TD align="right"> 2.93 </TD> <TD align="right"> 4.36 </TD> <TD align="right"> -3.53 </TD> <TD align="right"> -4.83 </TD> <TD align="right"> 0.83 </TD> <TD align="right"> 0.93 </TD> <TD> <input type='radio' name='lgs1type12' varno='12' tbvarno='3' scenno='1' tbno='3' value='level' /> </TD> <TD> <input type='radio' name='lgs1type12' varno='12' tbvarno='3' scenno='1' tbno='3' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='12' tbvarno='3' scenno='1' tbno='3' /> </TD> </TR>
   <TR> <TD align="right"> 4 </TD> <TD> Nedarbo lygis </TD> <TD> proc </TD> <TD align="right"> -32.00 </TD> <TD align="right"> -12.98 </TD> <TD align="right"> 90.03 </TD> <TD align="right"> 5.25 </TD> <TD align="right"> -2.93 </TD> <TD align="right"> -3.16 </TD> <TD> <input type='radio' name='lgs1type13' varno='13' tbvarno='4' scenno='1' tbno='3' value='level' /> </TD> <TD> <input type='radio' name='lgs1type13' varno='13' tbvarno='4' scenno='1' tbno='3' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='13' tbvarno='4' scenno='1' tbno='3' /> </TD> </TR>
    </TABLE>
-]]></data></table><form><![CDATA[<!-- html table generated in R 2.9.2 by xtable 1.5-5 package -->
-<!-- Sun Nov 29 16:13:14 2009 -->
+]]></data></table><form><![CDATA[<!-- html table generated in R 2.10.1 by xtable 1.5-6 package -->
+<!-- Tue Apr 13 10:44:56 2010 -->
 <TABLE border="1" ,cellpading="2", id="scentable1">
 <TR> <TH>  </TH> <TH> Rodiklis </TH> <TH> Vienetai </TH> <TH> 2006 </TH> <TH> 2007 </TH> <TH> 2008 </TH> <TH> 2009 </TH> <TH> 2010 </TH> <TH> 2011 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Vidutinė paskolų palūkanų norma<input name='scen1egzo1[]' value='Vidutinė paskolų palūkanų norma' type='hidden'/> </TD> <TD> proc. </TD> <TD> 5.27<input name='scen1egzo1[]' value=5.27 type='hidden' scenno='1' varno='1'  valno='1'/> </TD> <TD> 7.79<input name='scen1egzo1[]' value=7.793333333 type='hidden' scenno='1' varno='1'  valno='2'/> </TD> <TD> 9.42<input name='scen1egzo1[]' value=9.42 type='hidden' scenno='1' varno='1'  valno='3'/> </TD> <TD> <input name='scen1egzo1[]' value=8.38 type='text' size='5' scenno='1' varno='1' id='valinp1-1-4' valno='4'/> </TD> <TD> <input name='scen1egzo1[]' value=8.18 type='text' size='5' scenno='1' varno='1' id='valinp1-1-5' valno='5'/> </TD> <TD> <input name='scen1egzo1[]' value=8.17 type='text' size='5' scenno='1' varno='1' id='valinp1-1-6' valno='6'/> </TD> </TR>
@@ -40,59 +40,59 @@
   <TR> <TD align="right"> 7 </TD> <TD> Vokietijos bendras vidaus produktas<input name='scen1egzo7[]' value='Vokietijos bendras vidaus produktas' type='hidden'/> </TD> <TD> mlrd. Eur </TD> <TD> 2187.79<input name='scen1egzo7[]' value=2187.7860687 type='hidden' scenno='1' varno='7'  valno='1'/> </TD> <TD> 2241.59<input name='scen1egzo7[]' value=2241.5854309 type='hidden' scenno='1' varno='7'  valno='2'/> </TD> <TD> 2270.1<input name='scen1egzo7[]' value=2270.1049632 type='hidden' scenno='1' varno='7'  valno='3'/> </TD> <TD> <input name='scen1egzo7[]' value=2120.85 type='text' size='5' scenno='1' varno='7' id='valinp1-7-4' valno='4'/> </TD> <TD> <input name='scen1egzo7[]' value=2188.68 type='text' size='5' scenno='1' varno='7' id='valinp1-7-5' valno='5'/> </TD> <TD> <input name='scen1egzo7[]' value=2211.61 type='text' size='5' scenno='1' varno='7' id='valinp1-7-6' valno='6'/> </TD> </TR>
    </TABLE>
 ]]></form> <csv><real><level>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
-Bendrasis vidaus produktas (BVP)	mln. Lt	71657.92189	78042.26538	80544.76773	72918.9399151592	75452.9655466607	78107.473592976
-Namų ūkių vartojimo išlaidos	mln. Lt	49764.0969	55949.78531	58688.88268	54764.4770210771	56439.9467184644	57581.5087639925
-Prekių ir paslaugų balansas	mln. Lt	-10632.79115	-15047.72528	-16056.16703	-8155.69522220817	-10197.2871175541	-10051.1391825977
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	18675.645439	22673.545608	21418.466365	13930.5548035455	16757.9708238634	18067.8414646644
+Bendrasis vidaus produktas (BVP)	mln. Lt	71657.92189	78042.26538	80544.76773	72918.9399151593	75452.965546661	78107.4735929763
+Namų ūkių vartojimo išlaidos	mln. Lt	49764.0969	55949.78531	58688.88268	54764.4770210771	56439.9467184646	57581.5087639928
+Prekių ir paslaugų balansas	mln. Lt	-10632.79115	-15047.72528	-16056.16703	-8155.69522220818	-10197.2871175542	-10051.1391825979
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	18675.645439	22673.545608	21418.466365	13930.5548035456	16757.9708238635	18067.8414646646
 Kompensacija darbuotojams	mln. Lt	0	0	0	0	0	0
 Likutinis perteklius ir mišriosios pajamos	mln. Lt	0	0	0	0	0	0
 BVP defliatorius	indeksas	1.181072859	1.291626331	1.38147978	1.35789121583239	1.29498362482885	1.25233167414280
 Vartojimo prekių ir paslaugų kainų indeksas	indeksas	1.055220101	1.138312406	1.24499011	1.24039784177527	1.18840422802756	1.15972024071208
 Gamintojų kainų indeksas	indeksas	1.182697513	1.383461501	1.449799186	1.25949320206003	1.24429408684035	1.22101754314515
-Vidutinis mėnesinis bruto darbo užmokestis	Lt	1701.179623	2019.893769	2285.356042	2129.13093356246	2091.17943590314	2041.01205584591
+Vidutinis mėnesinis bruto darbo užmokestis	Lt	1701.179623	2019.893769	2285.356042	2129.13093356246	2091.17943590315	2041.01205584592
 Darbo jėga, darbo jėgos tyrimų duomenimis	tūkst. žm	1582.185442	1599.810336	1645.800967	1608.59	1604.36	1603.72
-Užimtųjų skaičius	tūkst. žm	1505.798695	1532.598418	1514.404231	1473.41714113340	1473.4910427227	1477.04011367734
-Sąlyginis darbuotojų skaičius	tūkst. žm	1039.322787	1084.647756	1046.382964	995.833054391057	1004.11718619687	1013.44659145061
-Nedarbo lygis	proc	4.827926303	4.201242885	7.983756122	8.403189057908	8.15708178197529	7.8991274239056</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
-Bendrasis vidaus produktas (BVP)	mln. Lt	7.88657059608464	8.90947340030377	3.20659880619167	-9.46781278258059	3.47512681129183	3.51809637577953
-Namų ūkių vartojimo išlaidos	mln. Lt	10.5763336812248	12.4300224365169	4.89563517504765	-6.6867956582521	3.05940965480687	2.02261361305403
-Prekių ir paslaugų balansas	mln. Lt	21.5073562972586	41.5218738684621	6.70162254583637	-49.2052168679503	25.0327144372267	-1.43320407939448
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	19.2945975365545	21.407025433516	-5.53543439874338	-34.9600733957801	20.2965069244637	7.81640363602867
+Užimtųjų skaičius	tūkst. žm	1505.798695	1532.598418	1514.404231	1473.41714113340	1473.49104272270	1477.04011367734
+Sąlyginis darbuotojų skaičius	tūkst. žm	1039.322787	1084.647756	1046.382964	995.833054391057	1004.11718619687	1013.44659145062
+Nedarbo lygis	proc	4.827926303	4.201242885	7.983756122	8.40318905790797	8.15708178197512	7.8991274239054</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Bendrasis vidaus produktas (BVP)	mln. Lt	7.88657059608464	8.90947340030377	3.20659880619167	-9.4678127825805	3.47512681129210	3.51809637577956
+Namų ūkių vartojimo išlaidos	mln. Lt	10.5763336812248	12.4300224365169	4.89563517504765	-6.68679565825202	3.05940965480715	2.02261361305409
+Prekių ir paslaugų balansas	mln. Lt	21.5073562972586	41.5218738684621	6.70162254583637	-49.2052168679502	25.0327144372284	-1.43320407939467
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	19.2945975365545	21.407025433516	-5.53543439874338	-34.9600733957799	20.2965069244646	7.81640363602847
 Kompensacija darbuotojams	mln. Lt	0	0	0	0	0	0
 Likutinis perteklius ir mišriosios pajamos	mln. Lt	0	0	0	0	0	0
-BVP defliatorius	indeksas	6.6563657060722	9.36042778034916	6.95661329003985	-1.70748530011854	-4.63274158268849	-3.29362857323314
-Vartojimo prekių ir paslaugų kainų indeksas	indeksas	4.1420309216315	7.87440505741466	9.37156649068445	-0.368859815659828	-4.19168850481838	-2.41365577797459
-Gamintojų kainų indeksas	indeksas	1.40299731325646	16.9750917536596	4.79505103337168	-13.1263685190102	-1.20676437116286	-1.87066256613865
-Vidutinis mėnesinis bruto darbo užmokestis	Lt	19.2658088758308	18.7348908775402	13.1423878361397	-6.83591989897664	-1.78248773060726	-2.39899930134702
+BVP defliatorius	indeksas	6.6563657060722	9.36042778034916	6.95661329003985	-1.70748530011852	-4.63274158268842	-3.29362857323318
+Vartojimo prekių ir paslaugų kainų indeksas	indeksas	4.1420309216315	7.87440505741466	9.37156649068445	-0.368859815659828	-4.19168850481833	-2.41365577797458
+Gamintojų kainų indeksas	indeksas	1.40299731325646	16.9750917536596	4.79505103337168	-13.1263685190102	-1.20676437116284	-1.87066256613863
+Vidutinis mėnesinis bruto darbo užmokestis	Lt	19.2658088758308	18.7348908775402	13.1423878361397	-6.83591989897653	-1.78248773060711	-2.39899930134697
 Darbo jėga, darbo jėgos tyrimų duomenimis	tūkst. žm	-1.52470143769297	1.11395880230833	2.87475521098270	-2.26096397718303	-0.262963216232848	-0.0398912962177977
-Užimtųjų skaičius	tūkst. žm	0.88351883283544	1.77976797887982	-1.18714640354014	-2.70648278891412	0.00501565966897211	0.240861386444680
-Sąlyginis darbuotojų skaičius	tūkst. žm	2.93216130851777	4.36100983899625	-3.52785425391137	-4.83091863572646	0.8318795775341	0.92911518515879
-Nedarbo lygis	proc	-31.9991889672429	-12.9803849244879	90.033195902693	5.25357901091457	-2.92873662887669	-3.1623362982542</growth><gdpshare>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Užimtųjų skaičius	tūkst. žm	0.88351883283544	1.77976797887982	-1.18714640354014	-2.70648278891409	0.00501565966910533	0.240861386444702
+Sąlyginis darbuotojų skaičius	tūkst. žm	2.93216130851777	4.36100983899625	-3.52785425391137	-4.83091863572646	0.831879577534256	0.92911518515888
+Nedarbo lygis	proc	-31.9991889672429	-12.9803849244879	90.033195902693	5.25357901091426	-2.92873662887837	-3.16233629825465</growth><gdpshare>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
 Bendrasis vidaus produktas (BVP)	mln. Lt	100	100	100	100	100	100
-Namų ūkių vartojimo išlaidos	mln. Lt	69.4467486461461	71.6916468756663	72.8649226188538	75.1032270693941	74.8014956198925	73.7208696110876
-Prekių ir paslaugų balansas	mln. Lt	-14.8382633344044	-19.2815075353467	-19.9344631346173	-11.1846047565931	-13.514759882099	-12.8683450126360
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	26.0622202631950	29.0529054962705	26.5920021481698	19.1041652823720	22.2098239644406	23.1320264675533
+Namų ūkių vartojimo išlaidos	mln. Lt	69.4467486461461	71.6916468756663	72.8649226188538	75.1032270693941	74.8014956198925	73.7208696110877
+Prekių ir paslaugų balansas	mln. Lt	-14.8382633344044	-19.2815075353467	-19.9344631346173	-11.1846047565931	-13.5147598820992	-12.8683450126362
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	26.0622202631950	29.0529054962705	26.5920021481698	19.104165282372	22.2098239644407	23.1320264675534
 Kompensacija darbuotojams	mln. Lt	0	0	0	0	0	0
 Likutinis perteklius ir mišriosios pajamos	mln. Lt	0	0	0	0	0	0</gdpshare></real><nominal><level>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
-Bendrasis vidaus produktas (BVP)	mln. Lt	82557.50379	97853.4652	111473.06277	100188.394140680	100831.449602490	100276.056223507
-Namų ūkių vartojimo išlaidos	mln. Lt	53135.90999	63144.66694	72720.9329	70886.9988606801	71198.2277718147	70632.5611068354
-Prekių ir paslaugų balansas	mln. Lt	-8481.42011	-13231.5547	-12707.89313	-5908.13350302167	-9291.4212422638	-9532.39866497445
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	20686.231888	27403.87383	27791.844984	17777.3097053285	20385.6868489933	21283.1934290102
-Kompensacija darbuotojams	mln. Lt	35336.835089	43521.024434	51007.59382	46420.4550326893	44081.4620784341	43960.7303936617
-Likutinis perteklius ir mišriosios pajamos	mln. Lt	28634.609421	31878.876907	36226.151998	29409.1772399183	30611.7277779488	30762.0642249289</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
-Bendrasis vidaus produktas (BVP)	mln. Lt	14.9577241598094	18.5276452264207	13.9183600112303	-10.1232247046115	0.641846261061874	-0.550813641153258
-Namų ūkių vartojimo išlaidos	mln. Lt	14.9964955896971	18.8361448065604	15.1655973878196	-2.52187914288962	0.439049354799481	-0.794495428723607
-Prekių ir paslaugų balansas	mln. Lt	65.3339724308401	56.006358939812	-3.95767226053945	-53.5081587279475	57.2649168728461	2.59354749319221
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	27.1911759970220	32.4739758230056	1.41575295670524	-36.0340786458651	14.6725077466753	4.40263105513761
-Kompensacija darbuotojams	mln. Lt	20.5704241378746	23.1605046812686	17.2021901675441	-8.99305072789387	-5.0387118191929	-0.273883122473562
-Likutinis perteklius ir mišriosios pajamos	mln. Lt	9.54681109966364	11.3298820958274	13.6368514602389	-18.8178274039651	4.08903155712308	0.491107356208831</growth><gdpshare>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Bendrasis vidaus produktas (BVP)	mln. Lt	82557.50379	97853.4652	111473.06277	100188.394140680	100831.449602491	100276.056223508
+Namų ūkių vartojimo išlaidos	mln. Lt	53135.90999	63144.66694	72720.9329	70886.9988606802	71198.227771815	70632.5611068357
+Prekių ir paslaugų balansas	mln. Lt	-8481.42011	-13231.5547	-12707.89313	-5908.13350302167	-9291.42124226394	-9532.39866497459
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	20686.231888	27403.87383	27791.844984	17777.3097053286	20385.6868489935	21283.1934290104
+Kompensacija darbuotojams	mln. Lt	35336.835089	43521.024434	51007.59382	46420.4550326893	44081.4620784343	43960.730393662
+Likutinis perteklius ir mišriosios pajamos	mln. Lt	28634.609421	31878.876907	36226.151998	29409.1772399184	30611.7277779490	30762.0642249292</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Bendrasis vidaus produktas (BVP)	mln. Lt	14.9577241598094	18.5276452264207	13.9183600112303	-10.1232247046114	0.641846261062207	-0.550813641153192
+Namų ūkių vartojimo išlaidos	mln. Lt	14.9964955896971	18.8361448065604	15.1655973878196	-2.52187914288954	0.43904935479977	-0.794495428723518
+Prekių ir paslaugų balansas	mln. Lt	65.3339724308401	56.006358939812	-3.95767226053945	-53.5081587279474	57.2649168728484	2.59354749319201
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	27.1911759970220	32.4739758230056	1.41575295670524	-36.0340786458649	14.6725077466762	4.40263105513747
+Kompensacija darbuotojams	mln. Lt	20.5704241378746	23.1605046812686	17.2021901675441	-8.99305072789386	-5.03871181919248	-0.273883122473317
+Likutinis perteklius ir mišriosios pajamos	mln. Lt	9.54681109966364	11.3298820958274	13.6368514602389	-18.8178274039650	4.08903155712337	0.491107356209075</growth><gdpshare>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
 Bendrasis vidaus produktas (BVP)	mln. Lt	100	100	100	100	100	100
-Namų ūkių vartojimo išlaidos	mln. Lt	64.362302093291	64.5298220261698	65.2363280356292	70.7537030298575	70.6111317971733	70.4381123140715
-Prekių ir paslaugų balansas	mln. Lt	-10.2733485396725	-13.5218049488144	-11.3999676820757	-5.89702385560319	-9.21480478451272	-9.50615632881245
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	25.0567555199091	28.005011139861	24.9314446857375	17.7438812726815	20.2175877956334	21.2246015953915
-Kompensacija darbuotojams	mln. Lt	42.8026932341434	44.4757110492189	45.7577755132133	46.3331660626356	43.7179691973261	43.8397081509436
-Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.5781788532922	32.4976735166456	29.3538762569876	30.3593054534374	30.6773774153651</gdpshare></nominal></csv></scenario><scenario><number>2</number><name>Scenarijus 2</name><table><tbno>1</tbno><tbname>BVP ir jo dalys</tbname><data><![CDATA[<!-- html table generated in R 2.9.2 by xtable 1.5-5 package -->
-<!-- Sun Nov 29 16:13:15 2009 -->
+Namų ūkių vartojimo išlaidos	mln. Lt	64.362302093291	64.5298220261698	65.2363280356292	70.7537030298575	70.6111317971732	70.4381123140714
+Prekių ir paslaugų balansas	mln. Lt	-10.2733485396725	-13.5218049488144	-11.3999676820757	-5.89702385560319	-9.21480478451282	-9.50615632881254
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	25.0567555199091	28.005011139861	24.9314446857375	17.7438812726816	20.2175877956336	21.2246015953916
+Kompensacija darbuotojams	mln. Lt	42.8026932341434	44.4757110492189	45.7577755132133	46.3331660626356	43.7179691973262	43.8397081509437
+Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.5781788532922	32.4976735166456	29.3538762569876	30.3593054534374	30.6773774153651</gdpshare></nominal></csv></scenario><scenario><number>2</number><name>Scenarijus 2</name><table><tbno>1</tbno><tbname>BVP ir jo dalys</tbname><data><![CDATA[<!-- html table generated in R 2.10.1 by xtable 1.5-6 package -->
+<!-- Tue Apr 13 10:44:56 2010 -->
 <TABLE border="1" ,cellpading="2", id="table1-2">
 <TR> <TH>  </TH> <TH> Rodiklis </TH> <TH> Vienetai </TH> <TH> 2006 </TH> <TH> 2007 </TH> <TH> 2008 </TH> <TH> 2009 </TH> <TH> 2010 </TH> <TH> 2011 </TH> <TH> Lygis </TH> <TH> Augimas </TH> <TH> BVP dalis </TH> <TH> Realios </TH> <TH> Veikusios </TH> <TH>  </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Bendrasis vidaus produktas (BVP) </TD> <TD> mln. Lt </TD> <TD align="right"> 7.89 </TD> <TD align="right"> 8.91 </TD> <TD align="right"> 3.21 </TD> <TD align="right"> -9.47 </TD> <TD align="right"> 3.48 </TD> <TD align="right"> 3.52 </TD> <TD> <input type='radio' name='lgs2type0' varno='0' tbvarno='1' scenno='2' tbno='1' value='level' /> </TD> <TD> <input type='radio' name='lgs2type0' varno='0' tbvarno='1' scenno='2' tbno='1' value='growth' checked /> </TD> <TD> <input type='radio' name='lgs2type0' varno='0' tbvarno='1' scenno='2' tbno='1'  value='gdpshare' /> </TD> <TD> <input type='radio' name='rn2type0' varno='0' tbvarno='1' scenno='2' tbno='1' value='real'  checked/> </TD> <TD> <input type='radio' name='rn2type0' varno='0' tbvarno='1' scenno='2' tbno='1' value='nominal' /> </TD> <TD> <input type='submit' value='Lyginti' varno='0' tbvarno='1' scenno='2' tbno='1' /> </TD> </TR>
@@ -102,8 +102,8 @@ Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.57817885
   <TR> <TD align="right"> 5 </TD> <TD> Kompensacija darbuotojams </TD> <TD> mln. Lt </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD> <input type='radio' name='lgs2type4' varno='4' tbvarno='5' scenno='2' tbno='1' value='level' /> </TD> <TD> <input type='radio' name='lgs2type4' varno='4' tbvarno='5' scenno='2' tbno='1' value='growth' checked /> </TD> <TD> <input type='radio' name='lgs2type4' varno='4' tbvarno='5' scenno='2' tbno='1'  value='gdpshare' /> </TD> <TD> <input type='radio' name='rn2type4' varno='4' tbvarno='5' scenno='2' tbno='1' value='real'  checked/> </TD> <TD> <input type='radio' name='rn2type4' varno='4' tbvarno='5' scenno='2' tbno='1' value='nominal' /> </TD> <TD> <input type='submit' value='Lyginti' varno='4' tbvarno='5' scenno='2' tbno='1' /> </TD> </TR>
   <TR> <TD align="right"> 6 </TD> <TD> Likutinis perteklius ir mišriosios pajamos </TD> <TD> mln. Lt </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD> <input type='radio' name='lgs2type5' varno='5' tbvarno='6' scenno='2' tbno='1' value='level' /> </TD> <TD> <input type='radio' name='lgs2type5' varno='5' tbvarno='6' scenno='2' tbno='1' value='growth' checked /> </TD> <TD> <input type='radio' name='lgs2type5' varno='5' tbvarno='6' scenno='2' tbno='1'  value='gdpshare' /> </TD> <TD> <input type='radio' name='rn2type5' varno='5' tbvarno='6' scenno='2' tbno='1' value='real'  checked/> </TD> <TD> <input type='radio' name='rn2type5' varno='5' tbvarno='6' scenno='2' tbno='1' value='nominal' /> </TD> <TD> <input type='submit' value='Lyginti' varno='5' tbvarno='6' scenno='2' tbno='1' /> </TD> </TR>
    </TABLE>
-]]></data></table><table><tbno>2</tbno><tbname>Kainos</tbname><data><![CDATA[<!-- html table generated in R 2.9.2 by xtable 1.5-5 package -->
-<!-- Sun Nov 29 16:13:15 2009 -->
+]]></data></table><table><tbno>2</tbno><tbname>Kainos</tbname><data><![CDATA[<!-- html table generated in R 2.10.1 by xtable 1.5-6 package -->
+<!-- Tue Apr 13 10:44:57 2010 -->
 <TABLE border="1" ,cellpading="2", id="table2-2">
 <TR> <TH>  </TH> <TH> Rodiklis </TH> <TH> Vienetai </TH> <TH> 2006 </TH> <TH> 2007 </TH> <TH> 2008 </TH> <TH> 2009 </TH> <TH> 2010 </TH> <TH> 2011 </TH> <TH> Lygis </TH> <TH> Augimas </TH> <TH>  </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> BVP defliatorius </TD> <TD> indeksas </TD> <TD align="right"> 6.66 </TD> <TD align="right"> 9.36 </TD> <TD align="right"> 6.96 </TD> <TD align="right"> -1.71 </TD> <TD align="right"> -4.63 </TD> <TD align="right"> -3.29 </TD> <TD> <input type='radio' name='lgs2type6' varno='6' tbvarno='1' scenno='2' tbno='2' value='level' /> </TD> <TD> <input type='radio' name='lgs2type6' varno='6' tbvarno='1' scenno='2' tbno='2' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='6' tbvarno='1' scenno='2' tbno='2' /> </TD> </TR>
@@ -111,8 +111,8 @@ Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.57817885
   <TR> <TD align="right"> 3 </TD> <TD> Gamintojų kainų indeksas </TD> <TD> indeksas </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 16.98 </TD> <TD align="right"> 4.80 </TD> <TD align="right"> -13.13 </TD> <TD align="right"> -1.21 </TD> <TD align="right"> -1.87 </TD> <TD> <input type='radio' name='lgs2type8' varno='8' tbvarno='3' scenno='2' tbno='2' value='level' /> </TD> <TD> <input type='radio' name='lgs2type8' varno='8' tbvarno='3' scenno='2' tbno='2' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='8' tbvarno='3' scenno='2' tbno='2' /> </TD> </TR>
   <TR> <TD align="right"> 4 </TD> <TD> Vidutinis mėnesinis bruto darbo užmokestis </TD> <TD> Lt </TD> <TD align="right"> 19.27 </TD> <TD align="right"> 18.73 </TD> <TD align="right"> 13.14 </TD> <TD align="right"> -6.84 </TD> <TD align="right"> -1.78 </TD> <TD align="right"> -2.40 </TD> <TD> <input type='radio' name='lgs2type9' varno='9' tbvarno='4' scenno='2' tbno='2' value='level' /> </TD> <TD> <input type='radio' name='lgs2type9' varno='9' tbvarno='4' scenno='2' tbno='2' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='9' tbvarno='4' scenno='2' tbno='2' /> </TD> </TR>
    </TABLE>
-]]></data></table><table><tbno>3</tbno><tbname>Darbo rinkos rodikliai</tbname><data><![CDATA[<!-- html table generated in R 2.9.2 by xtable 1.5-5 package -->
-<!-- Sun Nov 29 16:13:15 2009 -->
+]]></data></table><table><tbno>3</tbno><tbname>Darbo rinkos rodikliai</tbname><data><![CDATA[<!-- html table generated in R 2.10.1 by xtable 1.5-6 package -->
+<!-- Tue Apr 13 10:44:57 2010 -->
 <TABLE border="1" ,cellpading="2", id="table3-2">
 <TR> <TH>  </TH> <TH> Rodiklis </TH> <TH> Vienetai </TH> <TH> 2006 </TH> <TH> 2007 </TH> <TH> 2008 </TH> <TH> 2009 </TH> <TH> 2010 </TH> <TH> 2011 </TH> <TH> Lygis </TH> <TH> Augimas </TH> <TH>  </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Darbo jėga, darbo jėgos tyrimų duomenimis </TD> <TD> tūkst. žm </TD> <TD align="right"> -1.52 </TD> <TD align="right"> 1.11 </TD> <TD align="right"> 2.87 </TD> <TD align="right"> -2.26 </TD> <TD align="right"> -0.26 </TD> <TD align="right"> -0.04 </TD> <TD> <input type='radio' name='lgs2type10' varno='10' tbvarno='1' scenno='2' tbno='3' value='level' /> </TD> <TD> <input type='radio' name='lgs2type10' varno='10' tbvarno='1' scenno='2' tbno='3' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='10' tbvarno='1' scenno='2' tbno='3' /> </TD> </TR>
@@ -120,8 +120,8 @@ Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.57817885
   <TR> <TD align="right"> 3 </TD> <TD> Sąlyginis darbuotojų skaičius </TD> <TD> tūkst. žm </TD> <TD align="right"> 2.93 </TD> <TD align="right"> 4.36 </TD> <TD align="right"> -3.53 </TD> <TD align="right"> -4.83 </TD> <TD align="right"> 0.83 </TD> <TD align="right"> 0.93 </TD> <TD> <input type='radio' name='lgs2type12' varno='12' tbvarno='3' scenno='2' tbno='3' value='level' /> </TD> <TD> <input type='radio' name='lgs2type12' varno='12' tbvarno='3' scenno='2' tbno='3' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='12' tbvarno='3' scenno='2' tbno='3' /> </TD> </TR>
   <TR> <TD align="right"> 4 </TD> <TD> Nedarbo lygis </TD> <TD> proc </TD> <TD align="right"> -32.00 </TD> <TD align="right"> -12.98 </TD> <TD align="right"> 90.03 </TD> <TD align="right"> 5.25 </TD> <TD align="right"> -2.93 </TD> <TD align="right"> -3.16 </TD> <TD> <input type='radio' name='lgs2type13' varno='13' tbvarno='4' scenno='2' tbno='3' value='level' /> </TD> <TD> <input type='radio' name='lgs2type13' varno='13' tbvarno='4' scenno='2' tbno='3' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='13' tbvarno='4' scenno='2' tbno='3' /> </TD> </TR>
    </TABLE>
-]]></data></table><form><![CDATA[<!-- html table generated in R 2.9.2 by xtable 1.5-5 package -->
-<!-- Sun Nov 29 16:13:15 2009 -->
+]]></data></table><form><![CDATA[<!-- html table generated in R 2.10.1 by xtable 1.5-6 package -->
+<!-- Tue Apr 13 10:44:57 2010 -->
 <TABLE border="1" ,cellpading="2", id="scentable2">
 <TR> <TH>  </TH> <TH> Rodiklis </TH> <TH> Vienetai </TH> <TH> 2006 </TH> <TH> 2007 </TH> <TH> 2008 </TH> <TH> 2009 </TH> <TH> 2010 </TH> <TH> 2011 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Vidutinė paskolų palūkanų norma<input name='scen2egzo1[]' value='Vidutinė paskolų palūkanų norma' type='hidden'/> </TD> <TD> proc. </TD> <TD> 5.27<input name='scen2egzo1[]' value=5.27 type='hidden' scenno='2' varno='1'  valno='1'/> </TD> <TD> 7.79<input name='scen2egzo1[]' value=7.793333333 type='hidden' scenno='2' varno='1'  valno='2'/> </TD> <TD> 9.42<input name='scen2egzo1[]' value=9.42 type='hidden' scenno='2' varno='1'  valno='3'/> </TD> <TD> <input name='scen2egzo1[]' value=8.38 type='text' size='5' scenno='2' varno='1' id='valinp2-1-4' valno='4'/> </TD> <TD> <input name='scen2egzo1[]' value=8.18 type='text' size='5' scenno='2' varno='1' id='valinp2-1-5' valno='5'/> </TD> <TD> <input name='scen2egzo1[]' value=8.17 type='text' size='5' scenno='2' varno='1' id='valinp2-1-6' valno='6'/> </TD> </TR>
@@ -133,59 +133,59 @@ Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.57817885
   <TR> <TD align="right"> 7 </TD> <TD> Vokietijos bendras vidaus produktas<input name='scen2egzo7[]' value='Vokietijos bendras vidaus produktas' type='hidden'/> </TD> <TD> mlrd. Eur </TD> <TD> 2187.79<input name='scen2egzo7[]' value=2187.7860687 type='hidden' scenno='2' varno='7'  valno='1'/> </TD> <TD> 2241.59<input name='scen2egzo7[]' value=2241.5854309 type='hidden' scenno='2' varno='7'  valno='2'/> </TD> <TD> 2270.1<input name='scen2egzo7[]' value=2270.1049632 type='hidden' scenno='2' varno='7'  valno='3'/> </TD> <TD> <input name='scen2egzo7[]' value=2120.85 type='text' size='5' scenno='2' varno='7' id='valinp2-7-4' valno='4'/> </TD> <TD> <input name='scen2egzo7[]' value=2188.68 type='text' size='5' scenno='2' varno='7' id='valinp2-7-5' valno='5'/> </TD> <TD> <input name='scen2egzo7[]' value=2211.61 type='text' size='5' scenno='2' varno='7' id='valinp2-7-6' valno='6'/> </TD> </TR>
    </TABLE>
 ]]></form> <csv><real><level>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
-Bendrasis vidaus produktas (BVP)	mln. Lt	71657.92189	78042.26538	80544.76773	72918.9399151592	75452.9655466607	78107.473592976
-Namų ūkių vartojimo išlaidos	mln. Lt	49764.0969	55949.78531	58688.88268	54764.4770210771	56439.9467184644	57581.5087639925
-Prekių ir paslaugų balansas	mln. Lt	-10632.79115	-15047.72528	-16056.16703	-8155.69522220817	-10197.2871175541	-10051.1391825977
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	18675.645439	22673.545608	21418.466365	13930.5548035455	16757.9708238634	18067.8414646644
+Bendrasis vidaus produktas (BVP)	mln. Lt	71657.92189	78042.26538	80544.76773	72918.9399151593	75452.965546661	78107.4735929763
+Namų ūkių vartojimo išlaidos	mln. Lt	49764.0969	55949.78531	58688.88268	54764.4770210771	56439.9467184646	57581.5087639928
+Prekių ir paslaugų balansas	mln. Lt	-10632.79115	-15047.72528	-16056.16703	-8155.69522220818	-10197.2871175542	-10051.1391825979
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	18675.645439	22673.545608	21418.466365	13930.5548035456	16757.9708238635	18067.8414646646
 Kompensacija darbuotojams	mln. Lt	0	0	0	0	0	0
 Likutinis perteklius ir mišriosios pajamos	mln. Lt	0	0	0	0	0	0
 BVP defliatorius	indeksas	1.181072859	1.291626331	1.38147978	1.35789121583239	1.29498362482885	1.25233167414280
 Vartojimo prekių ir paslaugų kainų indeksas	indeksas	1.055220101	1.138312406	1.24499011	1.24039784177527	1.18840422802756	1.15972024071208
 Gamintojų kainų indeksas	indeksas	1.182697513	1.383461501	1.449799186	1.25949320206003	1.24429408684035	1.22101754314515
-Vidutinis mėnesinis bruto darbo užmokestis	Lt	1701.179623	2019.893769	2285.356042	2129.13093356246	2091.17943590314	2041.01205584591
+Vidutinis mėnesinis bruto darbo užmokestis	Lt	1701.179623	2019.893769	2285.356042	2129.13093356246	2091.17943590315	2041.01205584592
 Darbo jėga, darbo jėgos tyrimų duomenimis	tūkst. žm	1582.185442	1599.810336	1645.800967	1608.59	1604.36	1603.72
-Užimtųjų skaičius	tūkst. žm	1505.798695	1532.598418	1514.404231	1473.41714113340	1473.4910427227	1477.04011367734
-Sąlyginis darbuotojų skaičius	tūkst. žm	1039.322787	1084.647756	1046.382964	995.833054391057	1004.11718619687	1013.44659145061
-Nedarbo lygis	proc	4.827926303	4.201242885	7.983756122	8.403189057908	8.15708178197529	7.8991274239056</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
-Bendrasis vidaus produktas (BVP)	mln. Lt	7.88657059608464	8.90947340030377	3.20659880619167	-9.46781278258059	3.47512681129183	3.51809637577953
-Namų ūkių vartojimo išlaidos	mln. Lt	10.5763336812248	12.4300224365169	4.89563517504765	-6.6867956582521	3.05940965480687	2.02261361305403
-Prekių ir paslaugų balansas	mln. Lt	21.5073562972586	41.5218738684621	6.70162254583637	-49.2052168679503	25.0327144372267	-1.43320407939448
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	19.2945975365545	21.407025433516	-5.53543439874338	-34.9600733957801	20.2965069244637	7.81640363602867
+Užimtųjų skaičius	tūkst. žm	1505.798695	1532.598418	1514.404231	1473.41714113340	1473.49104272270	1477.04011367734
+Sąlyginis darbuotojų skaičius	tūkst. žm	1039.322787	1084.647756	1046.382964	995.833054391057	1004.11718619687	1013.44659145062
+Nedarbo lygis	proc	4.827926303	4.201242885	7.983756122	8.40318905790797	8.15708178197512	7.8991274239054</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Bendrasis vidaus produktas (BVP)	mln. Lt	7.88657059608464	8.90947340030377	3.20659880619167	-9.4678127825805	3.47512681129210	3.51809637577956
+Namų ūkių vartojimo išlaidos	mln. Lt	10.5763336812248	12.4300224365169	4.89563517504765	-6.68679565825202	3.05940965480715	2.02261361305409
+Prekių ir paslaugų balansas	mln. Lt	21.5073562972586	41.5218738684621	6.70162254583637	-49.2052168679502	25.0327144372284	-1.43320407939467
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	19.2945975365545	21.407025433516	-5.53543439874338	-34.9600733957799	20.2965069244646	7.81640363602847
 Kompensacija darbuotojams	mln. Lt	0	0	0	0	0	0
 Likutinis perteklius ir mišriosios pajamos	mln. Lt	0	0	0	0	0	0
-BVP defliatorius	indeksas	6.6563657060722	9.36042778034916	6.95661329003985	-1.70748530011854	-4.63274158268849	-3.29362857323314
-Vartojimo prekių ir paslaugų kainų indeksas	indeksas	4.1420309216315	7.87440505741466	9.37156649068445	-0.368859815659828	-4.19168850481838	-2.41365577797459
-Gamintojų kainų indeksas	indeksas	1.40299731325646	16.9750917536596	4.79505103337168	-13.1263685190102	-1.20676437116286	-1.87066256613865
-Vidutinis mėnesinis bruto darbo užmokestis	Lt	19.2658088758308	18.7348908775402	13.1423878361397	-6.83591989897664	-1.78248773060726	-2.39899930134702
+BVP defliatorius	indeksas	6.6563657060722	9.36042778034916	6.95661329003985	-1.70748530011852	-4.63274158268842	-3.29362857323318
+Vartojimo prekių ir paslaugų kainų indeksas	indeksas	4.1420309216315	7.87440505741466	9.37156649068445	-0.368859815659828	-4.19168850481833	-2.41365577797458
+Gamintojų kainų indeksas	indeksas	1.40299731325646	16.9750917536596	4.79505103337168	-13.1263685190102	-1.20676437116284	-1.87066256613863
+Vidutinis mėnesinis bruto darbo užmokestis	Lt	19.2658088758308	18.7348908775402	13.1423878361397	-6.83591989897653	-1.78248773060711	-2.39899930134697
 Darbo jėga, darbo jėgos tyrimų duomenimis	tūkst. žm	-1.52470143769297	1.11395880230833	2.87475521098270	-2.26096397718303	-0.262963216232848	-0.0398912962177977
-Užimtųjų skaičius	tūkst. žm	0.88351883283544	1.77976797887982	-1.18714640354014	-2.70648278891412	0.00501565966897211	0.240861386444680
-Sąlyginis darbuotojų skaičius	tūkst. žm	2.93216130851777	4.36100983899625	-3.52785425391137	-4.83091863572646	0.8318795775341	0.92911518515879
-Nedarbo lygis	proc	-31.9991889672429	-12.9803849244879	90.033195902693	5.25357901091457	-2.92873662887669	-3.1623362982542</growth><gdpshare>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Užimtųjų skaičius	tūkst. žm	0.88351883283544	1.77976797887982	-1.18714640354014	-2.70648278891409	0.00501565966910533	0.240861386444702
+Sąlyginis darbuotojų skaičius	tūkst. žm	2.93216130851777	4.36100983899625	-3.52785425391137	-4.83091863572646	0.831879577534256	0.92911518515888
+Nedarbo lygis	proc	-31.9991889672429	-12.9803849244879	90.033195902693	5.25357901091426	-2.92873662887837	-3.16233629825465</growth><gdpshare>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
 Bendrasis vidaus produktas (BVP)	mln. Lt	100	100	100	100	100	100
-Namų ūkių vartojimo išlaidos	mln. Lt	69.4467486461461	71.6916468756663	72.8649226188538	75.1032270693941	74.8014956198925	73.7208696110876
-Prekių ir paslaugų balansas	mln. Lt	-14.8382633344044	-19.2815075353467	-19.9344631346173	-11.1846047565931	-13.514759882099	-12.8683450126360
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	26.0622202631950	29.0529054962705	26.5920021481698	19.1041652823720	22.2098239644406	23.1320264675533
+Namų ūkių vartojimo išlaidos	mln. Lt	69.4467486461461	71.6916468756663	72.8649226188538	75.1032270693941	74.8014956198925	73.7208696110877
+Prekių ir paslaugų balansas	mln. Lt	-14.8382633344044	-19.2815075353467	-19.9344631346173	-11.1846047565931	-13.5147598820992	-12.8683450126362
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	26.0622202631950	29.0529054962705	26.5920021481698	19.104165282372	22.2098239644407	23.1320264675534
 Kompensacija darbuotojams	mln. Lt	0	0	0	0	0	0
 Likutinis perteklius ir mišriosios pajamos	mln. Lt	0	0	0	0	0	0</gdpshare></real><nominal><level>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
-Bendrasis vidaus produktas (BVP)	mln. Lt	82557.50379	97853.4652	111473.06277	100188.394140680	100831.449602490	100276.056223507
-Namų ūkių vartojimo išlaidos	mln. Lt	53135.90999	63144.66694	72720.9329	70886.9988606801	71198.2277718147	70632.5611068354
-Prekių ir paslaugų balansas	mln. Lt	-8481.42011	-13231.5547	-12707.89313	-5908.13350302167	-9291.4212422638	-9532.39866497445
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	20686.231888	27403.87383	27791.844984	17777.3097053285	20385.6868489933	21283.1934290102
-Kompensacija darbuotojams	mln. Lt	35336.835089	43521.024434	51007.59382	46420.4550326893	44081.4620784341	43960.7303936617
-Likutinis perteklius ir mišriosios pajamos	mln. Lt	28634.609421	31878.876907	36226.151998	29409.1772399183	30611.7277779488	30762.0642249289</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
-Bendrasis vidaus produktas (BVP)	mln. Lt	14.9577241598094	18.5276452264207	13.9183600112303	-10.1232247046115	0.641846261061874	-0.550813641153258
-Namų ūkių vartojimo išlaidos	mln. Lt	14.9964955896971	18.8361448065604	15.1655973878196	-2.52187914288962	0.439049354799481	-0.794495428723607
-Prekių ir paslaugų balansas	mln. Lt	65.3339724308401	56.006358939812	-3.95767226053945	-53.5081587279475	57.2649168728461	2.59354749319221
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	27.1911759970220	32.4739758230056	1.41575295670524	-36.0340786458651	14.6725077466753	4.40263105513761
-Kompensacija darbuotojams	mln. Lt	20.5704241378746	23.1605046812686	17.2021901675441	-8.99305072789387	-5.0387118191929	-0.273883122473562
-Likutinis perteklius ir mišriosios pajamos	mln. Lt	9.54681109966364	11.3298820958274	13.6368514602389	-18.8178274039651	4.08903155712308	0.491107356208831</growth><gdpshare>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Bendrasis vidaus produktas (BVP)	mln. Lt	82557.50379	97853.4652	111473.06277	100188.394140680	100831.449602491	100276.056223508
+Namų ūkių vartojimo išlaidos	mln. Lt	53135.90999	63144.66694	72720.9329	70886.9988606802	71198.227771815	70632.5611068357
+Prekių ir paslaugų balansas	mln. Lt	-8481.42011	-13231.5547	-12707.89313	-5908.13350302167	-9291.42124226394	-9532.39866497459
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	20686.231888	27403.87383	27791.844984	17777.3097053286	20385.6868489935	21283.1934290104
+Kompensacija darbuotojams	mln. Lt	35336.835089	43521.024434	51007.59382	46420.4550326893	44081.4620784343	43960.730393662
+Likutinis perteklius ir mišriosios pajamos	mln. Lt	28634.609421	31878.876907	36226.151998	29409.1772399184	30611.7277779490	30762.0642249292</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Bendrasis vidaus produktas (BVP)	mln. Lt	14.9577241598094	18.5276452264207	13.9183600112303	-10.1232247046114	0.641846261062207	-0.550813641153192
+Namų ūkių vartojimo išlaidos	mln. Lt	14.9964955896971	18.8361448065604	15.1655973878196	-2.52187914288954	0.43904935479977	-0.794495428723518
+Prekių ir paslaugų balansas	mln. Lt	65.3339724308401	56.006358939812	-3.95767226053945	-53.5081587279474	57.2649168728484	2.59354749319201
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	27.1911759970220	32.4739758230056	1.41575295670524	-36.0340786458649	14.6725077466762	4.40263105513747
+Kompensacija darbuotojams	mln. Lt	20.5704241378746	23.1605046812686	17.2021901675441	-8.99305072789386	-5.03871181919248	-0.273883122473317
+Likutinis perteklius ir mišriosios pajamos	mln. Lt	9.54681109966364	11.3298820958274	13.6368514602389	-18.8178274039650	4.08903155712337	0.491107356209075</growth><gdpshare>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
 Bendrasis vidaus produktas (BVP)	mln. Lt	100	100	100	100	100	100
-Namų ūkių vartojimo išlaidos	mln. Lt	64.362302093291	64.5298220261698	65.2363280356292	70.7537030298575	70.6111317971733	70.4381123140715
-Prekių ir paslaugų balansas	mln. Lt	-10.2733485396725	-13.5218049488144	-11.3999676820757	-5.89702385560319	-9.21480478451272	-9.50615632881245
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	25.0567555199091	28.005011139861	24.9314446857375	17.7438812726815	20.2175877956334	21.2246015953915
-Kompensacija darbuotojams	mln. Lt	42.8026932341434	44.4757110492189	45.7577755132133	46.3331660626356	43.7179691973261	43.8397081509436
-Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.5781788532922	32.4976735166456	29.3538762569876	30.3593054534374	30.6773774153651</gdpshare></nominal></csv></scenario><scenario><number>3</number><name>Scenarijus 3</name><table><tbno>1</tbno><tbname>BVP ir jo dalys</tbname><data><![CDATA[<!-- html table generated in R 2.9.2 by xtable 1.5-5 package -->
-<!-- Sun Nov 29 16:13:15 2009 -->
+Namų ūkių vartojimo išlaidos	mln. Lt	64.362302093291	64.5298220261698	65.2363280356292	70.7537030298575	70.6111317971732	70.4381123140714
+Prekių ir paslaugų balansas	mln. Lt	-10.2733485396725	-13.5218049488144	-11.3999676820757	-5.89702385560319	-9.21480478451282	-9.50615632881254
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	25.0567555199091	28.005011139861	24.9314446857375	17.7438812726816	20.2175877956336	21.2246015953916
+Kompensacija darbuotojams	mln. Lt	42.8026932341434	44.4757110492189	45.7577755132133	46.3331660626356	43.7179691973262	43.8397081509437
+Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.5781788532922	32.4976735166456	29.3538762569876	30.3593054534374	30.6773774153651</gdpshare></nominal></csv></scenario><scenario><number>3</number><name>Scenarijus 3</name><table><tbno>1</tbno><tbname>BVP ir jo dalys</tbname><data><![CDATA[<!-- html table generated in R 2.10.1 by xtable 1.5-6 package -->
+<!-- Tue Apr 13 10:44:57 2010 -->
 <TABLE border="1" ,cellpading="2", id="table1-3">
 <TR> <TH>  </TH> <TH> Rodiklis </TH> <TH> Vienetai </TH> <TH> 2006 </TH> <TH> 2007 </TH> <TH> 2008 </TH> <TH> 2009 </TH> <TH> 2010 </TH> <TH> 2011 </TH> <TH> Lygis </TH> <TH> Augimas </TH> <TH> BVP dalis </TH> <TH> Realios </TH> <TH> Veikusios </TH> <TH>  </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Bendrasis vidaus produktas (BVP) </TD> <TD> mln. Lt </TD> <TD align="right"> 7.89 </TD> <TD align="right"> 8.91 </TD> <TD align="right"> 3.21 </TD> <TD align="right"> -9.47 </TD> <TD align="right"> 3.48 </TD> <TD align="right"> 3.52 </TD> <TD> <input type='radio' name='lgs3type0' varno='0' tbvarno='1' scenno='3' tbno='1' value='level' /> </TD> <TD> <input type='radio' name='lgs3type0' varno='0' tbvarno='1' scenno='3' tbno='1' value='growth' checked /> </TD> <TD> <input type='radio' name='lgs3type0' varno='0' tbvarno='1' scenno='3' tbno='1'  value='gdpshare' /> </TD> <TD> <input type='radio' name='rn3type0' varno='0' tbvarno='1' scenno='3' tbno='1' value='real'  checked/> </TD> <TD> <input type='radio' name='rn3type0' varno='0' tbvarno='1' scenno='3' tbno='1' value='nominal' /> </TD> <TD> <input type='submit' value='Lyginti' varno='0' tbvarno='1' scenno='3' tbno='1' /> </TD> </TR>
@@ -195,8 +195,8 @@ Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.57817885
   <TR> <TD align="right"> 5 </TD> <TD> Kompensacija darbuotojams </TD> <TD> mln. Lt </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD> <input type='radio' name='lgs3type4' varno='4' tbvarno='5' scenno='3' tbno='1' value='level' /> </TD> <TD> <input type='radio' name='lgs3type4' varno='4' tbvarno='5' scenno='3' tbno='1' value='growth' checked /> </TD> <TD> <input type='radio' name='lgs3type4' varno='4' tbvarno='5' scenno='3' tbno='1'  value='gdpshare' /> </TD> <TD> <input type='radio' name='rn3type4' varno='4' tbvarno='5' scenno='3' tbno='1' value='real'  checked/> </TD> <TD> <input type='radio' name='rn3type4' varno='4' tbvarno='5' scenno='3' tbno='1' value='nominal' /> </TD> <TD> <input type='submit' value='Lyginti' varno='4' tbvarno='5' scenno='3' tbno='1' /> </TD> </TR>
   <TR> <TD align="right"> 6 </TD> <TD> Likutinis perteklius ir mišriosios pajamos </TD> <TD> mln. Lt </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD> <input type='radio' name='lgs3type5' varno='5' tbvarno='6' scenno='3' tbno='1' value='level' /> </TD> <TD> <input type='radio' name='lgs3type5' varno='5' tbvarno='6' scenno='3' tbno='1' value='growth' checked /> </TD> <TD> <input type='radio' name='lgs3type5' varno='5' tbvarno='6' scenno='3' tbno='1'  value='gdpshare' /> </TD> <TD> <input type='radio' name='rn3type5' varno='5' tbvarno='6' scenno='3' tbno='1' value='real'  checked/> </TD> <TD> <input type='radio' name='rn3type5' varno='5' tbvarno='6' scenno='3' tbno='1' value='nominal' /> </TD> <TD> <input type='submit' value='Lyginti' varno='5' tbvarno='6' scenno='3' tbno='1' /> </TD> </TR>
    </TABLE>
-]]></data></table><table><tbno>2</tbno><tbname>Kainos</tbname><data><![CDATA[<!-- html table generated in R 2.9.2 by xtable 1.5-5 package -->
-<!-- Sun Nov 29 16:13:15 2009 -->
+]]></data></table><table><tbno>2</tbno><tbname>Kainos</tbname><data><![CDATA[<!-- html table generated in R 2.10.1 by xtable 1.5-6 package -->
+<!-- Tue Apr 13 10:44:57 2010 -->
 <TABLE border="1" ,cellpading="2", id="table2-3">
 <TR> <TH>  </TH> <TH> Rodiklis </TH> <TH> Vienetai </TH> <TH> 2006 </TH> <TH> 2007 </TH> <TH> 2008 </TH> <TH> 2009 </TH> <TH> 2010 </TH> <TH> 2011 </TH> <TH> Lygis </TH> <TH> Augimas </TH> <TH>  </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> BVP defliatorius </TD> <TD> indeksas </TD> <TD align="right"> 6.66 </TD> <TD align="right"> 9.36 </TD> <TD align="right"> 6.96 </TD> <TD align="right"> -1.71 </TD> <TD align="right"> -4.63 </TD> <TD align="right"> -3.29 </TD> <TD> <input type='radio' name='lgs3type6' varno='6' tbvarno='1' scenno='3' tbno='2' value='level' /> </TD> <TD> <input type='radio' name='lgs3type6' varno='6' tbvarno='1' scenno='3' tbno='2' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='6' tbvarno='1' scenno='3' tbno='2' /> </TD> </TR>
@@ -204,8 +204,8 @@ Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.57817885
   <TR> <TD align="right"> 3 </TD> <TD> Gamintojų kainų indeksas </TD> <TD> indeksas </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 16.98 </TD> <TD align="right"> 4.80 </TD> <TD align="right"> -13.13 </TD> <TD align="right"> -1.21 </TD> <TD align="right"> -1.87 </TD> <TD> <input type='radio' name='lgs3type8' varno='8' tbvarno='3' scenno='3' tbno='2' value='level' /> </TD> <TD> <input type='radio' name='lgs3type8' varno='8' tbvarno='3' scenno='3' tbno='2' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='8' tbvarno='3' scenno='3' tbno='2' /> </TD> </TR>
   <TR> <TD align="right"> 4 </TD> <TD> Vidutinis mėnesinis bruto darbo užmokestis </TD> <TD> Lt </TD> <TD align="right"> 19.27 </TD> <TD align="right"> 18.73 </TD> <TD align="right"> 13.14 </TD> <TD align="right"> -6.84 </TD> <TD align="right"> -1.78 </TD> <TD align="right"> -2.40 </TD> <TD> <input type='radio' name='lgs3type9' varno='9' tbvarno='4' scenno='3' tbno='2' value='level' /> </TD> <TD> <input type='radio' name='lgs3type9' varno='9' tbvarno='4' scenno='3' tbno='2' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='9' tbvarno='4' scenno='3' tbno='2' /> </TD> </TR>
    </TABLE>
-]]></data></table><table><tbno>3</tbno><tbname>Darbo rinkos rodikliai</tbname><data><![CDATA[<!-- html table generated in R 2.9.2 by xtable 1.5-5 package -->
-<!-- Sun Nov 29 16:13:15 2009 -->
+]]></data></table><table><tbno>3</tbno><tbname>Darbo rinkos rodikliai</tbname><data><![CDATA[<!-- html table generated in R 2.10.1 by xtable 1.5-6 package -->
+<!-- Tue Apr 13 10:44:57 2010 -->
 <TABLE border="1" ,cellpading="2", id="table3-3">
 <TR> <TH>  </TH> <TH> Rodiklis </TH> <TH> Vienetai </TH> <TH> 2006 </TH> <TH> 2007 </TH> <TH> 2008 </TH> <TH> 2009 </TH> <TH> 2010 </TH> <TH> 2011 </TH> <TH> Lygis </TH> <TH> Augimas </TH> <TH>  </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Darbo jėga, darbo jėgos tyrimų duomenimis </TD> <TD> tūkst. žm </TD> <TD align="right"> -1.52 </TD> <TD align="right"> 1.11 </TD> <TD align="right"> 2.87 </TD> <TD align="right"> -2.26 </TD> <TD align="right"> -0.26 </TD> <TD align="right"> -0.04 </TD> <TD> <input type='radio' name='lgs3type10' varno='10' tbvarno='1' scenno='3' tbno='3' value='level' /> </TD> <TD> <input type='radio' name='lgs3type10' varno='10' tbvarno='1' scenno='3' tbno='3' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='10' tbvarno='1' scenno='3' tbno='3' /> </TD> </TR>
@@ -213,8 +213,8 @@ Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.57817885
   <TR> <TD align="right"> 3 </TD> <TD> Sąlyginis darbuotojų skaičius </TD> <TD> tūkst. žm </TD> <TD align="right"> 2.93 </TD> <TD align="right"> 4.36 </TD> <TD align="right"> -3.53 </TD> <TD align="right"> -4.83 </TD> <TD align="right"> 0.83 </TD> <TD align="right"> 0.93 </TD> <TD> <input type='radio' name='lgs3type12' varno='12' tbvarno='3' scenno='3' tbno='3' value='level' /> </TD> <TD> <input type='radio' name='lgs3type12' varno='12' tbvarno='3' scenno='3' tbno='3' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='12' tbvarno='3' scenno='3' tbno='3' /> </TD> </TR>
   <TR> <TD align="right"> 4 </TD> <TD> Nedarbo lygis </TD> <TD> proc </TD> <TD align="right"> -32.00 </TD> <TD align="right"> -12.98 </TD> <TD align="right"> 90.03 </TD> <TD align="right"> 5.25 </TD> <TD align="right"> -2.93 </TD> <TD align="right"> -3.16 </TD> <TD> <input type='radio' name='lgs3type13' varno='13' tbvarno='4' scenno='3' tbno='3' value='level' /> </TD> <TD> <input type='radio' name='lgs3type13' varno='13' tbvarno='4' scenno='3' tbno='3' value='growth' checked /> </TD> <TD> <input type='submit' value='Lyginti' varno='13' tbvarno='4' scenno='3' tbno='3' /> </TD> </TR>
    </TABLE>
-]]></data></table><form><![CDATA[<!-- html table generated in R 2.9.2 by xtable 1.5-5 package -->
-<!-- Sun Nov 29 16:13:15 2009 -->
+]]></data></table><form><![CDATA[<!-- html table generated in R 2.10.1 by xtable 1.5-6 package -->
+<!-- Tue Apr 13 10:44:57 2010 -->
 <TABLE border="1" ,cellpading="2", id="scentable3">
 <TR> <TH>  </TH> <TH> Rodiklis </TH> <TH> Vienetai </TH> <TH> 2006 </TH> <TH> 2007 </TH> <TH> 2008 </TH> <TH> 2009 </TH> <TH> 2010 </TH> <TH> 2011 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Vidutinė paskolų palūkanų norma<input name='scen3egzo1[]' value='Vidutinė paskolų palūkanų norma' type='hidden'/> </TD> <TD> proc. </TD> <TD> 5.27<input name='scen3egzo1[]' value=5.27 type='hidden' scenno='3' varno='1'  valno='1'/> </TD> <TD> 7.79<input name='scen3egzo1[]' value=7.793333333 type='hidden' scenno='3' varno='1'  valno='2'/> </TD> <TD> 9.42<input name='scen3egzo1[]' value=9.42 type='hidden' scenno='3' varno='1'  valno='3'/> </TD> <TD> <input name='scen3egzo1[]' value=8.38 type='text' size='5' scenno='3' varno='1' id='valinp3-1-4' valno='4'/> </TD> <TD> <input name='scen3egzo1[]' value=8.18 type='text' size='5' scenno='3' varno='1' id='valinp3-1-5' valno='5'/> </TD> <TD> <input name='scen3egzo1[]' value=8.17 type='text' size='5' scenno='3' varno='1' id='valinp3-1-6' valno='6'/> </TD> </TR>
@@ -226,57 +226,57 @@ Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.57817885
   <TR> <TD align="right"> 7 </TD> <TD> Vokietijos bendras vidaus produktas<input name='scen3egzo7[]' value='Vokietijos bendras vidaus produktas' type='hidden'/> </TD> <TD> mlrd. Eur </TD> <TD> 2187.79<input name='scen3egzo7[]' value=2187.7860687 type='hidden' scenno='3' varno='7'  valno='1'/> </TD> <TD> 2241.59<input name='scen3egzo7[]' value=2241.5854309 type='hidden' scenno='3' varno='7'  valno='2'/> </TD> <TD> 2270.1<input name='scen3egzo7[]' value=2270.1049632 type='hidden' scenno='3' varno='7'  valno='3'/> </TD> <TD> <input name='scen3egzo7[]' value=2120.85 type='text' size='5' scenno='3' varno='7' id='valinp3-7-4' valno='4'/> </TD> <TD> <input name='scen3egzo7[]' value=2188.68 type='text' size='5' scenno='3' varno='7' id='valinp3-7-5' valno='5'/> </TD> <TD> <input name='scen3egzo7[]' value=2211.61 type='text' size='5' scenno='3' varno='7' id='valinp3-7-6' valno='6'/> </TD> </TR>
    </TABLE>
 ]]></form> <csv><real><level>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
-Bendrasis vidaus produktas (BVP)	mln. Lt	71657.92189	78042.26538	80544.76773	72918.9399151592	75452.9655466607	78107.473592976
-Namų ūkių vartojimo išlaidos	mln. Lt	49764.0969	55949.78531	58688.88268	54764.4770210771	56439.9467184644	57581.5087639925
-Prekių ir paslaugų balansas	mln. Lt	-10632.79115	-15047.72528	-16056.16703	-8155.69522220817	-10197.2871175541	-10051.1391825977
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	18675.645439	22673.545608	21418.466365	13930.5548035455	16757.9708238634	18067.8414646644
+Bendrasis vidaus produktas (BVP)	mln. Lt	71657.92189	78042.26538	80544.76773	72918.9399151593	75452.965546661	78107.4735929763
+Namų ūkių vartojimo išlaidos	mln. Lt	49764.0969	55949.78531	58688.88268	54764.4770210771	56439.9467184646	57581.5087639928
+Prekių ir paslaugų balansas	mln. Lt	-10632.79115	-15047.72528	-16056.16703	-8155.69522220818	-10197.2871175542	-10051.1391825979
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	18675.645439	22673.545608	21418.466365	13930.5548035456	16757.9708238635	18067.8414646646
 Kompensacija darbuotojams	mln. Lt	0	0	0	0	0	0
 Likutinis perteklius ir mišriosios pajamos	mln. Lt	0	0	0	0	0	0
 BVP defliatorius	indeksas	1.181072859	1.291626331	1.38147978	1.35789121583239	1.29498362482885	1.25233167414280
 Vartojimo prekių ir paslaugų kainų indeksas	indeksas	1.055220101	1.138312406	1.24499011	1.24039784177527	1.18840422802756	1.15972024071208
 Gamintojų kainų indeksas	indeksas	1.182697513	1.383461501	1.449799186	1.25949320206003	1.24429408684035	1.22101754314515
-Vidutinis mėnesinis bruto darbo užmokestis	Lt	1701.179623	2019.893769	2285.356042	2129.13093356246	2091.17943590314	2041.01205584591
+Vidutinis mėnesinis bruto darbo užmokestis	Lt	1701.179623	2019.893769	2285.356042	2129.13093356246	2091.17943590315	2041.01205584592
 Darbo jėga, darbo jėgos tyrimų duomenimis	tūkst. žm	1582.185442	1599.810336	1645.800967	1608.59	1604.36	1603.72
-Užimtųjų skaičius	tūkst. žm	1505.798695	1532.598418	1514.404231	1473.41714113340	1473.4910427227	1477.04011367734
-Sąlyginis darbuotojų skaičius	tūkst. žm	1039.322787	1084.647756	1046.382964	995.833054391057	1004.11718619687	1013.44659145061
-Nedarbo lygis	proc	4.827926303	4.201242885	7.983756122	8.403189057908	8.15708178197529	7.8991274239056</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
-Bendrasis vidaus produktas (BVP)	mln. Lt	7.88657059608464	8.90947340030377	3.20659880619167	-9.46781278258059	3.47512681129183	3.51809637577953
-Namų ūkių vartojimo išlaidos	mln. Lt	10.5763336812248	12.4300224365169	4.89563517504765	-6.6867956582521	3.05940965480687	2.02261361305403
-Prekių ir paslaugų balansas	mln. Lt	21.5073562972586	41.5218738684621	6.70162254583637	-49.2052168679503	25.0327144372267	-1.43320407939448
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	19.2945975365545	21.407025433516	-5.53543439874338	-34.9600733957801	20.2965069244637	7.81640363602867
+Užimtųjų skaičius	tūkst. žm	1505.798695	1532.598418	1514.404231	1473.41714113340	1473.49104272270	1477.04011367734
+Sąlyginis darbuotojų skaičius	tūkst. žm	1039.322787	1084.647756	1046.382964	995.833054391057	1004.11718619687	1013.44659145062
+Nedarbo lygis	proc	4.827926303	4.201242885	7.983756122	8.40318905790797	8.15708178197512	7.8991274239054</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Bendrasis vidaus produktas (BVP)	mln. Lt	7.88657059608464	8.90947340030377	3.20659880619167	-9.4678127825805	3.47512681129210	3.51809637577956
+Namų ūkių vartojimo išlaidos	mln. Lt	10.5763336812248	12.4300224365169	4.89563517504765	-6.68679565825202	3.05940965480715	2.02261361305409
+Prekių ir paslaugų balansas	mln. Lt	21.5073562972586	41.5218738684621	6.70162254583637	-49.2052168679502	25.0327144372284	-1.43320407939467
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	19.2945975365545	21.407025433516	-5.53543439874338	-34.9600733957799	20.2965069244646	7.81640363602847
 Kompensacija darbuotojams	mln. Lt	0	0	0	0	0	0
 Likutinis perteklius ir mišriosios pajamos	mln. Lt	0	0	0	0	0	0
-BVP defliatorius	indeksas	6.6563657060722	9.36042778034916	6.95661329003985	-1.70748530011854	-4.63274158268849	-3.29362857323314
-Vartojimo prekių ir paslaugų kainų indeksas	indeksas	4.1420309216315	7.87440505741466	9.37156649068445	-0.368859815659828	-4.19168850481838	-2.41365577797459
-Gamintojų kainų indeksas	indeksas	1.40299731325646	16.9750917536596	4.79505103337168	-13.1263685190102	-1.20676437116286	-1.87066256613865
-Vidutinis mėnesinis bruto darbo užmokestis	Lt	19.2658088758308	18.7348908775402	13.1423878361397	-6.83591989897664	-1.78248773060726	-2.39899930134702
+BVP defliatorius	indeksas	6.6563657060722	9.36042778034916	6.95661329003985	-1.70748530011852	-4.63274158268842	-3.29362857323318
+Vartojimo prekių ir paslaugų kainų indeksas	indeksas	4.1420309216315	7.87440505741466	9.37156649068445	-0.368859815659828	-4.19168850481833	-2.41365577797458
+Gamintojų kainų indeksas	indeksas	1.40299731325646	16.9750917536596	4.79505103337168	-13.1263685190102	-1.20676437116284	-1.87066256613863
+Vidutinis mėnesinis bruto darbo užmokestis	Lt	19.2658088758308	18.7348908775402	13.1423878361397	-6.83591989897653	-1.78248773060711	-2.39899930134697
 Darbo jėga, darbo jėgos tyrimų duomenimis	tūkst. žm	-1.52470143769297	1.11395880230833	2.87475521098270	-2.26096397718303	-0.262963216232848	-0.0398912962177977
-Užimtųjų skaičius	tūkst. žm	0.88351883283544	1.77976797887982	-1.18714640354014	-2.70648278891412	0.00501565966897211	0.240861386444680
-Sąlyginis darbuotojų skaičius	tūkst. žm	2.93216130851777	4.36100983899625	-3.52785425391137	-4.83091863572646	0.8318795775341	0.92911518515879
-Nedarbo lygis	proc	-31.9991889672429	-12.9803849244879	90.033195902693	5.25357901091457	-2.92873662887669	-3.1623362982542</growth><gdpshare>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Užimtųjų skaičius	tūkst. žm	0.88351883283544	1.77976797887982	-1.18714640354014	-2.70648278891409	0.00501565966910533	0.240861386444702
+Sąlyginis darbuotojų skaičius	tūkst. žm	2.93216130851777	4.36100983899625	-3.52785425391137	-4.83091863572646	0.831879577534256	0.92911518515888
+Nedarbo lygis	proc	-31.9991889672429	-12.9803849244879	90.033195902693	5.25357901091426	-2.92873662887837	-3.16233629825465</growth><gdpshare>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
 Bendrasis vidaus produktas (BVP)	mln. Lt	100	100	100	100	100	100
-Namų ūkių vartojimo išlaidos	mln. Lt	69.4467486461461	71.6916468756663	72.8649226188538	75.1032270693941	74.8014956198925	73.7208696110876
-Prekių ir paslaugų balansas	mln. Lt	-14.8382633344044	-19.2815075353467	-19.9344631346173	-11.1846047565931	-13.514759882099	-12.8683450126360
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	26.0622202631950	29.0529054962705	26.5920021481698	19.1041652823720	22.2098239644406	23.1320264675533
+Namų ūkių vartojimo išlaidos	mln. Lt	69.4467486461461	71.6916468756663	72.8649226188538	75.1032270693941	74.8014956198925	73.7208696110877
+Prekių ir paslaugų balansas	mln. Lt	-14.8382633344044	-19.2815075353467	-19.9344631346173	-11.1846047565931	-13.5147598820992	-12.8683450126362
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	26.0622202631950	29.0529054962705	26.5920021481698	19.104165282372	22.2098239644407	23.1320264675534
 Kompensacija darbuotojams	mln. Lt	0	0	0	0	0	0
 Likutinis perteklius ir mišriosios pajamos	mln. Lt	0	0	0	0	0	0</gdpshare></real><nominal><level>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
-Bendrasis vidaus produktas (BVP)	mln. Lt	82557.50379	97853.4652	111473.06277	100188.394140680	100831.449602490	100276.056223507
-Namų ūkių vartojimo išlaidos	mln. Lt	53135.90999	63144.66694	72720.9329	70886.9988606801	71198.2277718147	70632.5611068354
-Prekių ir paslaugų balansas	mln. Lt	-8481.42011	-13231.5547	-12707.89313	-5908.13350302167	-9291.4212422638	-9532.39866497445
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	20686.231888	27403.87383	27791.844984	17777.3097053285	20385.6868489933	21283.1934290102
-Kompensacija darbuotojams	mln. Lt	35336.835089	43521.024434	51007.59382	46420.4550326893	44081.4620784341	43960.7303936617
-Likutinis perteklius ir mišriosios pajamos	mln. Lt	28634.609421	31878.876907	36226.151998	29409.1772399183	30611.7277779488	30762.0642249289</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
-Bendrasis vidaus produktas (BVP)	mln. Lt	14.9577241598094	18.5276452264207	13.9183600112303	-10.1232247046115	0.641846261061874	-0.550813641153258
-Namų ūkių vartojimo išlaidos	mln. Lt	14.9964955896971	18.8361448065604	15.1655973878196	-2.52187914288962	0.439049354799481	-0.794495428723607
-Prekių ir paslaugų balansas	mln. Lt	65.3339724308401	56.006358939812	-3.95767226053945	-53.5081587279475	57.2649168728461	2.59354749319221
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	27.1911759970220	32.4739758230056	1.41575295670524	-36.0340786458651	14.6725077466753	4.40263105513761
-Kompensacija darbuotojams	mln. Lt	20.5704241378746	23.1605046812686	17.2021901675441	-8.99305072789387	-5.0387118191929	-0.273883122473562
-Likutinis perteklius ir mišriosios pajamos	mln. Lt	9.54681109966364	11.3298820958274	13.6368514602389	-18.8178274039651	4.08903155712308	0.491107356208831</growth><gdpshare>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Bendrasis vidaus produktas (BVP)	mln. Lt	82557.50379	97853.4652	111473.06277	100188.394140680	100831.449602491	100276.056223508
+Namų ūkių vartojimo išlaidos	mln. Lt	53135.90999	63144.66694	72720.9329	70886.9988606802	71198.227771815	70632.5611068357
+Prekių ir paslaugų balansas	mln. Lt	-8481.42011	-13231.5547	-12707.89313	-5908.13350302167	-9291.42124226394	-9532.39866497459
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	20686.231888	27403.87383	27791.844984	17777.3097053286	20385.6868489935	21283.1934290104
+Kompensacija darbuotojams	mln. Lt	35336.835089	43521.024434	51007.59382	46420.4550326893	44081.4620784343	43960.730393662
+Likutinis perteklius ir mišriosios pajamos	mln. Lt	28634.609421	31878.876907	36226.151998	29409.1772399184	30611.7277779490	30762.0642249292</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Bendrasis vidaus produktas (BVP)	mln. Lt	14.9577241598094	18.5276452264207	13.9183600112303	-10.1232247046114	0.641846261062207	-0.550813641153192
+Namų ūkių vartojimo išlaidos	mln. Lt	14.9964955896971	18.8361448065604	15.1655973878196	-2.52187914288954	0.43904935479977	-0.794495428723518
+Prekių ir paslaugų balansas	mln. Lt	65.3339724308401	56.006358939812	-3.95767226053945	-53.5081587279474	57.2649168728484	2.59354749319201
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	27.1911759970220	32.4739758230056	1.41575295670524	-36.0340786458649	14.6725077466762	4.40263105513747
+Kompensacija darbuotojams	mln. Lt	20.5704241378746	23.1605046812686	17.2021901675441	-8.99305072789386	-5.03871181919248	-0.273883122473317
+Likutinis perteklius ir mišriosios pajamos	mln. Lt	9.54681109966364	11.3298820958274	13.6368514602389	-18.8178274039650	4.08903155712337	0.491107356209075</growth><gdpshare>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
 Bendrasis vidaus produktas (BVP)	mln. Lt	100	100	100	100	100	100
-Namų ūkių vartojimo išlaidos	mln. Lt	64.362302093291	64.5298220261698	65.2363280356292	70.7537030298575	70.6111317971733	70.4381123140715
-Prekių ir paslaugų balansas	mln. Lt	-10.2733485396725	-13.5218049488144	-11.3999676820757	-5.89702385560319	-9.21480478451272	-9.50615632881245
-Bendrojo pagrindinio kapitalo formavimas	mln. Lt	25.0567555199091	28.005011139861	24.9314446857375	17.7438812726815	20.2175877956334	21.2246015953915
-Kompensacija darbuotojams	mln. Lt	42.8026932341434	44.4757110492189	45.7577755132133	46.3331660626356	43.7179691973261	43.8397081509436
+Namų ūkių vartojimo išlaidos	mln. Lt	64.362302093291	64.5298220261698	65.2363280356292	70.7537030298575	70.6111317971732	70.4381123140714
+Prekių ir paslaugų balansas	mln. Lt	-10.2733485396725	-13.5218049488144	-11.3999676820757	-5.89702385560319	-9.21480478451282	-9.50615632881254
+Bendrojo pagrindinio kapitalo formavimas	mln. Lt	25.0567555199091	28.005011139861	24.9314446857375	17.7438812726816	20.2175877956336	21.2246015953916
+Kompensacija darbuotojams	mln. Lt	42.8026932341434	44.4757110492189	45.7577755132133	46.3331660626356	43.7179691973262	43.8397081509437
 Likutinis perteklius ir mišriosios pajamos	mln. Lt	34.6844418816699	32.5781788532922	32.4976735166456	29.3538762569876	30.3593054534374	30.6773774153651</gdpshare></nominal></csv></scenario><rest><fbase><level>Rodiklis	2006	2007	2008	2009	2010	2011
 Vidutinė paskolų palūkanų norma	5.27	7.793333333	9.42	8.38	8.18	8.17
 Darbo jėga, darbo jėgos tyrimų duomenimis	1582.185442	1599.810336	1645.800967	1608.59	1604.36	1603.72
@@ -305,4 +305,8 @@ Importo defliatorius	0	0	0	80	80	80
 Nemineralinių medžiagų importo defliatorius	0	0	0	0.8	0.8	0.8
 Eksporto defliatorius	0	0	0	80	80	80
 Vokietijos importo defliatorius	0	0	0	0.8	0.8	0.8
-Vokietijos bendras vidaus produktas	0	0	0	1800	1600	1400</lower> </frest></rest></lemasta>
+Vokietijos bendras vidaus produktas	0	0	0	1800	1600	1400</lower> </frest></rest><exoadd><fbase><level>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Eksportas (nominaliomis kainomis)	mln. Lt	48898.97316	53294.59557	66588.26797	0	0	0
+Valdžios išlaidos (nominaliomis kainomis)	mln. Lt	15893.178325	17786.853819	21262.927105	0	0	0</level><growth>Rodiklis	Vienetai	2006	2007	2008	2009	2010	2011
+Eksportas (nominaliomis kainomis)	mln. Lt	48898.97316	53294.59557	66588.26797	0	0	0
+Valdžios išlaidos (nominaliomis kainomis)	mln. Lt	15893.178325	17786.853819	21262.927105	0	0	0</growth></fbase></exoadd></lemasta>
