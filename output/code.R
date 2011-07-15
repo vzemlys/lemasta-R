@@ -933,10 +933,26 @@ doforecast <- function(exo,ea,model,sceno,scenname,years=2006:2011) {
     dd <- introduce.exo(scq,ladt,exo2y)
     print(dd[,colnames(scq)])
 
+    model <- as.integer(model)
+    print(model)
+
+    eqlist <- metamodel[[model]]$eqlist
+    prep <- metamodel[[model]]$prep
+
+    if(FALSE) {
+    if(model==2) {
+      eqlist <- eqR2
+      prep <- fp.prep2
+    }
+    else {
+      eqlist <- eqR
+      prep <- fp.prep
+    }
+  }
     print(ea)
     if(!is.null(ea)) {
         colnames(ea) <- c("Rodiklis",years)
-        eainfo <- exoadd(ea,ee,eqR)
+        eainfo <- exoadd(ea,ee,eqlist)
         eqlist <- eainfo$eqlist
         exotable <- eainfo$exotable
         dd <- eainfo$data
@@ -945,9 +961,9 @@ doforecast <- function(exo,ea,model,sceno,scenname,years=2006:2011) {
         prep <- eq.prepare(start=c(2009,1),end=c(2011,4),eqlist,exotable,data=ladt)
     }
     else {
-        eqlist <- eqR
+       
         exotable <- ee
-        prep=fp.prep
+       
     }
     print(exotable)
   #  ftry <- eqforecast(start=c(2009,1),end=c(2011,4),eqR,ee,data=dd,leave=TRUE,use.jacobian=TRUE,control=list(ftol=1e-3))

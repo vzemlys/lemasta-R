@@ -28,6 +28,20 @@ eqstrm <- sub("(=)(.*)","-(\\2)",eqstr)
 
 eqR <- lapply(eqstrm,function(l){print(l);eviewstoR(l,varnames=colnames(ladt))})
 
+eqstr2 <- read.eviews("eviews/lygtys_95q1-09q4.txt")
+eqstrm2 <- sub("(=)(.*)","-(\\2)",eqstr2)
+eqR2 <- lapply(eqstrm2,function(l){print(l);eviewstoR(l,varnames=colnames(ladt))})
+
+eqstr3 <- read.eviews("eviews/lygtys_97q1-09q4.txt")
+eqstrm3 <- sub("(=)(.*)","-(\\2)",eqstr3)
+eqR3 <- lapply(eqstrm3,function(l){print(l);eviewstoR(l,varnames=colnames(ladt))})
+
+eqstr4 <- read.eviews("eviews/lygtys_99q1-09q4.txt")
+eqstrm4 <- sub("(=)(.*)","-(\\2)",eqstr4)
+eqR4 <- lapply(eqstrm3,function(l){print(l);eviewstoR(l,varnames=colnames(ladt))})
+
+
+# "lygtys_97q1-09q4.txt" "lygtys_99q1-09q4.txt"
 ################################################################
 ##Insert exogenous forecasts
 
